@@ -170,8 +170,10 @@ nav{max-width:var(--max);margin:0 auto;padding:0 22px;height:50px;display:flex;a
 .hero .lead{margin:20px auto 0;max-width:32ch}
 .hero-cta{margin-top:30px;display:flex;flex-direction:column;align-items:center;gap:11px}
 .hero-cta small{font-size:13.5px;color:var(--muted)}
-.hero-phone{display:flex;justify-content:center;margin-top:44px}
-.hero-phone .phone{--pw:min(320px,72vw)}
+.hero-phone{display:flex;justify-content:center;margin-top:40px}
+/* El teléfono se mide por la altura de la ventana, no por el ancho: si no,
+   en pantallas bajas asoma por debajo del pliegue y se corta. */
+.hero-phone .phone{--pw:min(300px,30vh,72vw)}
 
 .meter{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:34px}
 .mt{background:rgba(255,255,255,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:15px;padding:13px 18px;min-width:132px;box-shadow:0 1px 2px rgba(0,0,0,.03)}
@@ -182,8 +184,8 @@ nav{max-width:var(--max);margin:0 auto;padding:0 22px;height:50px;display:flex;a
 /* ══ Scroll cinematográfico ════════════════════════════════════════ */
 .cine{position:relative;padding:40px 0 0}
 .cine-in{max-width:var(--max);margin:0 auto;padding:0 22px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
-.stage{position:sticky;top:calc(50vh - min(300px,34vh));height:min(600px,68vh);display:flex;align-items:center;justify-content:center}
-.stage .phone{--pw:min(290px,64vw)}
+.stage{position:sticky;top:0;height:100svh;display:flex;align-items:center;justify-content:center}
+.stage .phone{--pw:min(280px,31vh,60vw)}
 .steps{padding:14vh 0 22vh;display:flex;flex-direction:column;gap:20vh}
 .step{max-width:26ch}
 .step .kicker{display:block;margin-bottom:12px}
@@ -191,8 +193,8 @@ nav{max-width:var(--max);margin:0 auto;padding:0 22px;height:50px;display:flex;a
 
 @media(max-width:900px){
   .cine-in{grid-template-columns:1fr;gap:0}
-  .stage{position:sticky;top:56px;height:auto;padding:10px 0 18px;background:linear-gradient(180deg,#fff 72%,rgba(255,255,255,0));z-index:20}
-  .stage .phone{--pw:min(215px,50vw)}
+  .stage{position:sticky;top:50px;height:auto;padding:14px 0 20px;background:linear-gradient(180deg,#fff 74%,rgba(255,255,255,0));z-index:20}
+  .stage .phone{--pw:min(200px,26vh,48vw)}
   .steps{padding:2vh 0 16vh;gap:26vh}
   .step{max-width:none;text-align:center;margin:0 auto}
 }
