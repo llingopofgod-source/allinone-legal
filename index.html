@@ -404,19 +404,20 @@ var CONFIG = {
 
   social: { mostrar:false, reservadas:0, reproducciones:0, listaEspera:0 },
 
-  /* ── COBRO ────────────────────────────────────────────────────────
+  /* ── COBRO (Lemon Squeezy) ────────────────────────────────────────
      Mientras `enlace` esté vacío, el botón sólo reserva la plaza y no
-     cobra nada. En cuanto se pegue aquí un Payment Link de Stripe, el
-     mismo botón pasa a cobrar: guarda el correo, y lleva al pago con la
-     dirección ya rellenada y una referencia para poder cruzarlo después.
+     cobra nada. En cuanto se pegue aquí el enlace del checkout, el mismo
+     botón pasa a cobrar: guarda el correo y lleva al pago con la
+     dirección ya rellenada y una referencia para cruzarlo después.
 
-     El enlace se crea en Stripe → Payment links → producto de 5,99 USD
-     mensuales. En "After payment" hay que poner:
+     El enlace sale de Lemon Squeezy → Products → tu producto → Share.
+     Tiene esta pinta:  https://TUTIENDA.lemonsqueezy.com/buy/UUID
+     En el producto hay que poner, en "Redirect to URL after purchase":
         https://allinonehabits.online/gracias/
      ──────────────────────────────────────────────────────────────── */
   pago: {
-    enlace: "",                    // p.ej. "https://buy.stripe.com/xxxxxxxx"
-    textoBoton: "Reservar mi plaza",
+    proveedor: "lemonsqueezy",     // o "stripe", si algún día se cambia
+    enlace: "",
     textoBotonPago: "Pagar $5.99 y entrar"
   },
 
@@ -575,6 +576,23 @@ var form=$("rsv"),msg=$("msg"),btn=$("rsvBtn"),input=$("email"),
 
 function say(t,k){msg.textContent=t;msg.className="msg "+(k||"")}
 
+// Cada pasarela nombra sus parámetros a su manera. Lemon Squeezy usa
+// checkout[...]; Stripe, nombres sueltos. La referencia viaja como dato
+// personalizado para poder cruzar el pago con la fila de la base de datos.
+function urlPago(email,ref){
+  var base=CONFIG.pago.enlace, sep=base.indexOf("?")<0?"?":"&", q;
+  if(CONFIG.pago.proveedor==="stripe"){
+    q="prefilled_email="+encodeURIComponent(email)+
+      "&client_reference_id="+encodeURIComponent(ref);
+  }else{
+    // El correo va rellenado: si no, el comprador tiene que volver a
+    // escribir el que acaba de escribir aquí, y ahí se pierde gente.
+    q="checkout[email]="+encodeURIComponent(email)+
+      "&checkout[custom][ref]="+encodeURIComponent(ref);
+  }
+  return base+sep+q;
+}
+
 // El botón y la letra pequeña cambian solos según haya enlace de pago o no,
 // para que nunca prometan una cosa y hagan otra.
 btn.textContent = cobrando ? CONFIG.pago.textoBotonPago : "Reservar";
@@ -605,13 +623,7 @@ form.addEventListener("submit",function(ev){
     // viene a pagar, se le deja pasar igual al checkout.
     if(!(r.ok||r.status===409)) throw new Error(r.status);
 
-    if(cobrando){
-      var sep = CONFIG.pago.enlace.indexOf("?")<0 ? "?" : "&";
-      location.href = CONFIG.pago.enlace + sep +
-        "prefilled_email=" + encodeURIComponent(email) +
-        "&client_reference_id=" + encodeURIComponent(ref);
-      return;
-    }
+    if(cobrando){ location.href = urlPago(email,ref); return }
     form.style.display="none";
     say("Plaza reservada. Te escribo a "+email+" el día del lanzamiento.","ok");
   }).catch(function(){
