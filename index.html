@@ -418,7 +418,8 @@ var $=function(i){return document.getElementById(i)},
 
 /* ── Pinta una pantalla: material real si lo hay, hueco si no ───── */
 var ICON_IMG='<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="M21 16l-5-5-6 6-2-2-5 5"/></svg>',
-    ICON_VID='<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M11 10l4 2-4 2z" fill="currentColor" stroke="none"/></svg>';
+    ICON_VID='<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M11 10l4 2-4 2z" fill="currentColor" stroke="none"/></svg>',
+    VIDEOS=[];
 
 function paint(el){
   var m=MEDIA[el.dataset.media];
@@ -427,10 +428,23 @@ function paint(el){
   if(m.src){
     if(m.tipo==="video"){
       var v=document.createElement("video");
-      v.src=m.src; v.autoplay=true; v.muted=true; v.loop=true;
-      v.playsInline=true; v.setAttribute("playsinline","");
-      v.preload="metadata";
+      // Como atributos, no como propiedades: puestas por JS después de crear
+      // el elemento, los navegadores no las tienen en cuenta para decidir si
+      // pueden autoreproducir, y el vídeo se queda parado en el primer frame.
+      v.setAttribute("autoplay","");
+      v.setAttribute("muted","");      // sin esto no hay autoplay en móvil
+      v.setAttribute("loop","");
+      v.setAttribute("playsinline",""); // o iOS lo abre a pantalla completa
+      v.setAttribute("webkit-playsinline","");
+      v.muted=true;                     // Safari mira la propiedad, no el atributo
+      // El del hero se ve nada más entrar; los de más abajo pueden esperar.
+      v.preload = el.dataset.media==="hero" ? "auto" : "none";
+      v.src=m.src;
       el.insertBefore(v,notch);
+      VIDEOS.push(v);
+      // Algunos navegadores ignoran el autoplay de un elemento insertado por
+      // JS. Pedirlo a mano cuesta nada y cubre ese caso.
+      var go=v.play(); if(go&&go.catch) go.catch(function(){});
     }else{
       var i=document.createElement("img");
       i.src=m.src; i.alt=m.nombre; i.loading="lazy"; i.decoding="async";
@@ -511,6 +525,22 @@ if(!("IntersectionObserver" in window)){
     });
   },{threshold:.4});
   vo.observe(vs);
+}
+
+/* ── Los vídeos sólo corren mientras se ven ─────────────────────────
+   Fuera de pantalla no aportan nada y gastan batería y datos, que en un
+   móvil llegado desde Instagram es justo lo que no sobra. */
+if("IntersectionObserver" in window && VIDEOS.length){
+  var pv=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      var v=e.target;
+      if(e.isIntersecting){
+        if(v.preload==="none") v.preload="auto";
+        var p=v.play(); if(p&&p.catch) p.catch(function(){});
+      }else if(!v.paused){ v.pause() }
+    });
+  },{threshold:.2});
+  VIDEOS.forEach(function(v){pv.observe(v)});
 }
 
 /* ── Nav ────────────────────────────────────────────────────────── */
