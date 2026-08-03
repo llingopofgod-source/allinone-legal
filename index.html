@@ -618,9 +618,12 @@ function mount(view){
     view.appendChild(d);
     return d;
   });
-  var cur=0;
+  var cur=0, z=1;
   return function(i){
     if(i===cur||i<0||i>=nodes.length) return;
+    // La entrante va siempre por encima. Sin esto, al volver de la última a
+    // la primera la saliente queda delante y se ven las dos mezcladas.
+    nodes[i].style.zIndex=++z;
     nodes[cur].classList.remove("on");
     nodes[i].classList.add("on");
     cur=i;
