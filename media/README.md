@@ -1,40 +1,38 @@
 # Material real de la app
 
-Aquí van las capturas y los vídeos **reales** de AllInOne. La landing no dibuja
-ninguna interfaz: mientras un hueco esté vacío, muestra un marcador visible.
+Todo lo que hay aquí sale de una grabación de pantalla real del iPhone
+(`ScreenRecording_08-03-2026`), convertida de HDR (PQ/BT.2020) a SDR BT.709.
 
-## Cómo enchufar un archivo
+La grabación venía en HDR con MaxCLL de 120 nits. Convertirla con las
+herramientas normales la deja gris y lavada, y este ffmpeg no trae `zscale`
+ni `libplacebo`, así que la conversión se hizo a mano con `pq2sdr.py`:
+EOTF inversa de PQ, normalización contra el pico real (120 nits, no los
+10 000 del estándar) y matriz BT.2020 -> BT.709.
 
-1. Copia el archivo a esta carpeta, por ejemplo `habitos.png`.
-2. Abre `index.html`, busca el bloque `MEDIA` (arriba del script).
-3. Rellena `src`:
+## Qué hay
 
-```js
-habitos: { tipo:"img", src:"/media/habitos.png", nombre:"Hábitos" },
-```
+| Archivo         | Qué es                    | De qué segundo |
+|-----------------|---------------------------|----------------|
+| `hero.mp4`      | 14 s, cronómetro corriendo| 16–30          |
+| `demo.mp4`      | 24 s, recorrido general   | 2–26           |
+| `habitos.jpg`   | Lista de hábitos + logro  | 10             |
+| `rutinas.jpg`   | Cronómetro de rutina      | 18             |
+| `vida.jpg`      | Desglose de tiempo y salud| 26             |
+| `pantalla.jpg`  | Clasificar tu tiempo      | 34             |
+| `entrenos.jpg`  | Entrenamientos y métricas | 74             |
+| `aventuras.jpg` | Side quests               | 50             |
+| `sueno.jpg`     | Estrés e informe de sueño | 66             |
+| `nutricion.jpg` | Nutrición y macros        | 114            |
 
-Para un vídeo, `tipo:"video"` y un `.mp4`. Nada más: la página se recompone sola.
+Los vídeos van **sin pista de audio** a propósito: los navegadores móviles
+bloquean cualquier vídeo con sonido que intente arrancar solo.
 
-## Qué hace falta
+## Cambiar o añadir material
 
-| Clave        | Tipo    | Qué es                                   |
-|--------------|---------|------------------------------------------|
-| `hero`       | vídeo   | 20–30 s en bucle, el que abre la página  |
-| `demo`       | vídeo   | El mismo del Reel de Instagram           |
-| `habitos`    | captura | Pantalla de hábitos                      |
-| `ia`         | vídeo   | La guía con IA en uso                    |
-| `objetivos`  | captura | Objetivos                                |
-| `calendario` | vídeo   | Calendario                               |
-| `rutinas`    | captura | Rutinas                                  |
-| `stats`      | captura | Estadísticas                             |
-| `pantalla`   | captura | Tiempo de pantalla                       |
-| `entrenos`   | vídeo   | Entrenamientos                           |
-| `sueno`      | captura | Sueño                                    |
+1. Copia el archivo aquí.
+2. En `index.html`, busca el bloque `MEDIA` y rellena su `src`.
+3. Si es una función nueva, añádela también a `FEATURES`.
 
-## Formato
-
-- **Capturas**: PNG o JPG, verticales, del propio iPhone o del simulador.
-  Se recortan solas a la pantalla del mockup (`object-fit:cover`).
-- **Vídeos**: MP4 (H.264), verticales, **sin audio**, por debajo de 3 MB cada uno.
-  Se reproducen en bucle y en silencio; los navegadores móviles bloquean
-  cualquier vídeo con sonido que intente arrancar solo.
+Quedan dos huecos sin grabar: **Guía con IA** y **Calendario**. Están
+declarados en `MEDIA` con `src` vacío y fuera de `FEATURES`, así que hoy no
+se muestran. Cuando los grabes, rellena su `src` y añádelos a `FEATURES`.

@@ -357,31 +357,33 @@ footer a:hover{color:var(--ink)}
    Nada más. La página se recompone sola.
    ══════════════════════════════════════════════════════════════════ */
 var MEDIA = {
-  hero:     { tipo:"video", src:"", nombre:"Vídeo del hero",        nota:"20–30 s en bucle, vertical 9:19.5, sin sonido" },
-  demo:     { tipo:"video", src:"", nombre:"Vídeo principal",       nota:"El mismo del Reel de Instagram" },
-  habitos:  { tipo:"img",   src:"", nombre:"Hábitos" },
-  ia:       { tipo:"video", src:"", nombre:"Guía con IA" },
-  objetivos:{ tipo:"img",   src:"", nombre:"Objetivos" },
-  calendario:{tipo:"video", src:"", nombre:"Calendario" },
-  rutinas:  { tipo:"img",   src:"", nombre:"Rutinas" },
-  stats:    { tipo:"img",   src:"", nombre:"Estadísticas" },
-  pantalla: { tipo:"img",   src:"", nombre:"Tiempo de pantalla" },
-  entrenos: { tipo:"video", src:"", nombre:"Entrenamientos" },
-  sueno:    { tipo:"img",   src:"", nombre:"Sueño" }
+  hero:     { tipo:"video", src:"/media/hero.mp4",     nombre:"Vídeo del hero" },
+  demo:     { tipo:"video", src:"/media/demo.mp4",     nombre:"Vídeo principal" },
+  habitos:  { tipo:"img",   src:"/media/habitos.jpg",  nombre:"Hábitos" },
+  rutinas:  { tipo:"img",   src:"/media/rutinas.jpg",  nombre:"Rutinas" },
+  vida:     { tipo:"img",   src:"/media/vida.jpg",     nombre:"Vida" },
+  pantalla: { tipo:"img",   src:"/media/pantalla.jpg", nombre:"Tiempo de pantalla" },
+  entrenos: { tipo:"img",   src:"/media/entrenos.jpg", nombre:"Entrenamientos" },
+  aventuras:{ tipo:"img",   src:"/media/aventuras.jpg",nombre:"Aventuras" },
+  sueno:    { tipo:"img",   src:"/media/sueno.jpg",    nombre:"Sueño" },
+  nutricion:{ tipo:"img",   src:"/media/nutricion.jpg",nombre:"Nutrición" },
+
+  // Sin grabar todavía. Mientras sigan vacíos no se muestran (ver FEATURES).
+  ia:        { tipo:"video", src:"", nombre:"Guía con IA" },
+  calendario:{ tipo:"img",   src:"", nombre:"Calendario" }
 };
 
 /* ══ 2) EL RECORRIDO ══════════════════════════════════════════════
    Añadir, quitar o reordenar funciones es tocar esta lista.        */
 var FEATURES = [
-  { k:"habitos",   t:"Hábitos",             h:"Un toque y listo.",            p:"Rachas, niveles y XP para que volver mañana cueste menos que dejarlo." },
-  { k:"ia",        t:"Guía con IA",         h:"Te conoce de verdad.",         p:"Consejos escritos a partir de lo que haces cada día. Nunca se repiten." },
-  { k:"objetivos", t:"Objetivos",           h:"Metas que se cumplen.",        p:"Lo grande, partido en pasos diarios." },
-  { k:"calendario",t:"Calendario",          h:"Tu mes, de un vistazo.",       p:"Cada día pintado según lo que cumpliste." },
-  { k:"rutinas",   t:"Rutinas",             h:"Tu día, guiado.",              p:"Bloques encadenados con cronómetro. Tú empiezas, la app lleva el ritmo." },
-  { k:"stats",     t:"Estadísticas",        h:"Ves el progreso.",             p:"Cada semana contra la anterior. Sin adornos." },
-  { k:"pantalla",  t:"Tiempo de pantalla",  h:"A dónde se te va el día.",     p:"Las horas que no ves, al lado de lo que querías hacer con ellas." },
-  { k:"entrenos",  t:"Entrenamientos",      h:"Cada sesión cuenta.",          p:"Se sincroniza con tu reloj: ritmo cardíaco, zonas y carga real." },
-  { k:"sueno",     t:"Sueño",               h:"Descansar es progreso.",       p:"Fases, deuda de sueño y regularidad. Lo que explica por qué hoy puedes." }
+  { k:"habitos",   t:"Hábitos",            h:"Un toque y listo.",          p:"Rachas, niveles y XP. Volver mañana cuesta menos que dejarlo." },
+  { k:"rutinas",   t:"Rutinas",            h:"Tu día, guiado.",            p:"Bloques encadenados con cronómetro. Tú empiezas, la app lleva el ritmo." },
+  { k:"vida",      t:"Vida",               h:"Tu día en números.",         p:"Sueño, corazón y tiempo productivo. Cruzado con lo que haces." },
+  { k:"pantalla",  t:"Tiempo de pantalla", h:"A dónde se te va el día.",   p:"Clasifica tus horas y descubre cuántas fueron realmente tuyas." },
+  { k:"entrenos",  t:"Entrenamientos",     h:"Cada sesión cuenta.",        p:"Equilibrio, carga semanal y las métricas que manda tu reloj." },
+  { k:"aventuras", t:"Aventuras",          h:"Retos que se cuentan.",      p:"Misiones reales fuera de la pantalla. Con XP de verdad." },
+  { k:"sueno",     t:"Sueño y estrés",     h:"Descansar es progreso.",     p:"Deuda de sueño, consistencia y VO2 max. Lo que explica tu día." },
+  { k:"nutricion", t:"Nutrición",          h:"Sin contar a mano.",         p:"Fotografía el plato y la IA estima calorías y macros." }
 ];
 
 /* ══ 3) CONFIGURACIÓN ═════════════════════════════════════════════ */
