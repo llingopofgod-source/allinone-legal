@@ -419,6 +419,21 @@ var CONFIG = {
     proveedor: "lemonsqueezy",     // o "stripe", si algún día se cambia
     enlace: "",
     textoBotonPago: "Pagar $5.99 y entrar"
+
+    /* El producto ya existe y está publicado en Lemon Squeezy:
+       AllInOne Premium — Founders Edition · 5,99 USD cada mes.
+
+       Enlace del checkout EN MODO PRUEBA:
+       https://allinonehabits.lemonsqueezy.com/checkout/buy/72acc680-4296-4457-9fcd-0ccf1817bdd8
+
+       Está fuera de `enlace` a propósito. En modo prueba se cobra con
+       tarjetas falsas: si se publica aquí, cualquiera puede "comprar" una
+       plaza Founders sin pagar nada, y el contador de plazas se ensucia.
+
+       Para encender el cobro de verdad:
+       1. Activar la tienda en Lemon Squeezy (identidad + cuenta bancaria).
+       2. Apagar el modo prueba y copiar el enlace de la tienda ya activa.
+       3. Pegarlo arriba en `enlace`. El botón cambia solo. */
   },
 
   supabaseUrl:"https://glqlyizfvuainaewqlad.supabase.co",
