@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AllInOne — Restablecer contraseña</title>
+<style>*{box-sizing:border-box}
+body{margin:0;padding:3rem 1.25rem;font:16px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1a1a1a;background:#fff;display:flex;align-items:center;justify-content:center;min-height:100vh}
+main{max-width:420px;width:100%;text-align:center}
+.mark{width:56px;height:56px;border-radius:14px;background:#0d0d0d;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:600;margin:0 auto 1.5rem;letter-spacing:-.03em}
+h1{font-size:1.5rem;letter-spacing:-.02em;margin:0 0 .6rem}
+p{margin:.6rem 0;color:#555}
+.btn{display:block;width:100%;margin:1.75rem 0 .75rem;padding:1rem;border-radius:12px;background:#0d0d0d;color:#fff;text-decoration:none;font-weight:600;font-size:1.05rem;border:0;cursor:pointer}
+.hint{font-size:.87rem;color:#888}
+.hide{display:none}
+@media (prefers-color-scheme:dark){
+body{background:#0d0d0d;color:#e8e8e8}p{color:#aaa}.hint{color:#777}
+.mark{background:#e8e8e8;color:#0d0d0d}.btn{background:#e8e8e8;color:#0d0d0d}}
+</style></head><body><main>
+
+<div class="mark">A1</div>
+
+<div id="ok" class="hide">
+  <h1>Restablecer tu contraseña</h1>
+  <p>Toca el botón para volver a AllInOne y elegir tu contraseña nueva.</p>
+  <a id="open" class="btn" href="#">Abrir en AllInOne</a>
+  <p class="hint">Si no ocurre nada, asegúrate de tener AllInOne instalada en este dispositivo.</p>
+</div>
+
+<div id="expired" class="hide">
+  <h1>Este enlace ya no sirve</h1>
+  <p>Los enlaces de recuperación caducan y sólo se pueden usar una vez.</p>
+  <p class="hint">Abre AllInOne, entra en «¿Olvidaste tu contraseña?» y pide uno nuevo. Úsalo en cuanto llegue.</p>
+</div>
+
+<div id="empty" class="hide">
+  <h1>Falta el enlace del correo</h1>
+  <p>Esta página sólo funciona si llegas desde el correo de recuperación de AllInOne.</p>
+  <p class="hint">Abre el correo que te enviamos y toca el enlace que contiene.</p>
+</div>
+
+<script>
+// Los tokens de recuperación viajan en el fragmento (#access_token=…). El
+// fragmento nunca sale del navegador —no llega a este servidor ni queda en
+// ningún log—, así que la página se limita a reenviárselo a la app.
+//
+// Por qué existe esta página: Gmail abre los enlaces en su navegador interno, y
+// iOS no permite que un esquema propio (allinone://) se abra por una
+// redirección automática dentro de un webview. Con un toque del usuario sí.
+(function () {
+  var hash = window.location.hash.slice(1)
+  var query = window.location.search.slice(1)
+  var params = new URLSearchParams(hash || query)
+
+  var show = function (id) { document.getElementById(id).className = '' }
+
+  if (params.get('error') || params.get('error_code')) { show('expired'); return }
+
+  // Implícito: tokens en el fragmento. PKCE: ?code=… en la query.
+  var hasTokens = params.get('access_token') && params.get('refresh_token')
+  var hasCode = params.get('code')
+  if (!hasTokens && !hasCode) { show('empty'); return }
+
+  var target = 'allinone://reset-password' + (hash ? '#' + hash : '?' + query)
+  document.getElementById('open').setAttribute('href', target)
+  show('ok')
+
+  // Algunos navegadores sí abren la app sin interacción. Se intenta una vez; si
+  // no pasa nada, el botón sigue ahí, que es el camino que siempre funciona.
+  window.location.href = target
+})()
+</script>
+</main></body></html>
