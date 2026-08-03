@@ -297,7 +297,7 @@ footer a:hover{color:var(--ink)}
         <button class="btn btn-blue" type="submit" id="rsvBtn">Reservar</button>
       </form>
       <p class="msg" id="msg" role="status" aria-live="polite"></p>
-      <p class="fine">Reservar es gratis. El día del lanzamiento recibes tu código Founders para activar Premium al precio bloqueado desde la App Store.</p>
+      <p class="fine" id="fineTxt"></p>
     </div>
   </div>
 </section>
@@ -403,6 +403,22 @@ var CONFIG = {
   ],
 
   social: { mostrar:false, reservadas:0, reproducciones:0, listaEspera:0 },
+
+  /* ── COBRO ────────────────────────────────────────────────────────
+     Mientras `enlace` esté vacío, el botón sólo reserva la plaza y no
+     cobra nada. En cuanto se pegue aquí un Payment Link de Stripe, el
+     mismo botón pasa a cobrar: guarda el correo, y lleva al pago con la
+     dirección ya rellenada y una referencia para poder cruzarlo después.
+
+     El enlace se crea en Stripe → Payment links → producto de 5,99 USD
+     mensuales. En "After payment" hay que poner:
+        https://allinonehabits.online/gracias/
+     ──────────────────────────────────────────────────────────────── */
+  pago: {
+    enlace: "",                    // p.ej. "https://buy.stripe.com/xxxxxxxx"
+    textoBoton: "Reservar mi plaza",
+    textoBotonPago: "Pagar $5.99 y entrar"
+  },
 
   supabaseUrl:"https://glqlyizfvuainaewqlad.supabase.co",
   supabaseKey:"sb_publishable_TrfOjokY3fkoMbuFMmWbpA_dj3WXuxx",
@@ -553,9 +569,18 @@ addEventListener("scroll",function(){
   requestAnimationFrame(function(){hdr.classList.toggle("stuck",scrollY>8);busy=false});
 },{passive:true});
 
-/* ── Reserva ────────────────────────────────────────────────────── */
-var form=$("rsv"),msg=$("msg"),btn=$("rsvBtn"),input=$("email");
+/* ── Reserva / cobro ────────────────────────────────────────────── */
+var form=$("rsv"),msg=$("msg"),btn=$("rsvBtn"),input=$("email"),
+    cobrando=!!(CONFIG.pago && CONFIG.pago.enlace);
+
 function say(t,k){msg.textContent=t;msg.className="msg "+(k||"")}
+
+// El botón y la letra pequeña cambian solos según haya enlace de pago o no,
+// para que nunca prometan una cosa y hagan otra.
+btn.textContent = cobrando ? CONFIG.pago.textoBotonPago : "Reservar";
+$("fineTxt").textContent = cobrando
+  ? "Pago seguro con Stripe. Tu plaza Founders queda a tu nombre y recibes el código de acceso el día del lanzamiento."
+  : "Reservar es gratis. El día del lanzamiento recibes tu código Founders para activar Premium al precio bloqueado desde la App Store.";
 
 form.addEventListener("submit",function(ev){
   ev.preventDefault();
@@ -563,20 +588,32 @@ form.addEventListener("submit",function(ev){
   if(!/^\S+@\S+\.\S+$/.test(email)){say("Revisa el correo, parece incompleto.","err");input.focus();return}
   if(libres<=0){say("Las plazas Founders se han agotado.","err");return}
 
-  btn.disabled=true; say("Guardando tu plaza…");
+  // Referencia corta para cruzar el pago de Stripe con esta fila.
+  var ref = Date.now().toString(36) + Math.random().toString(36).slice(2,7);
+
+  btn.disabled=true;
+  say(cobrando ? "Un momento, te llevo al pago…" : "Guardando tu plaza…");
+
   fetch(CONFIG.supabaseUrl+"/rest/v1/"+CONFIG.tabla,{
     method:"POST",
     headers:{"apikey":CONFIG.supabaseKey,"Authorization":"Bearer "+CONFIG.supabaseKey,
              "Content-Type":"application/json","Prefer":"return=minimal"},
-    body:JSON.stringify({email:email,source:"landing"})
+    body:JSON.stringify({email:email,source:"landing",ref:ref,
+                         estado: cobrando ? "pendiente_pago" : "reserva"})
   }).then(function(r){
-    // 409 = ya estaba apuntado. Para quien reserva, eso es un éxito.
-    if(r.ok||r.status===409){
-      form.style.display="none";
-      say("Plaza reservada. Te escribo a "+email+" el día del lanzamiento.","ok");
+    // 409 = ese correo ya estaba. No es un error para quien lo escribe: si
+    // viene a pagar, se le deja pasar igual al checkout.
+    if(!(r.ok||r.status===409)) throw new Error(r.status);
+
+    if(cobrando){
+      var sep = CONFIG.pago.enlace.indexOf("?")<0 ? "?" : "&";
+      location.href = CONFIG.pago.enlace + sep +
+        "prefilled_email=" + encodeURIComponent(email) +
+        "&client_reference_id=" + encodeURIComponent(ref);
       return;
     }
-    throw new Error(r.status);
+    form.style.display="none";
+    say("Plaza reservada. Te escribo a "+email+" el día del lanzamiento.","ok");
   }).catch(function(){
     btn.disabled=false;
     say("No se pudo guardar. Inténtalo otra vez o escríbeme a allinone.support.app@gmail.com","err");
