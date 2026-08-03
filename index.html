@@ -357,8 +357,8 @@ footer a:hover{color:var(--ink)}
    Nada más. La página se recompone sola.
    ══════════════════════════════════════════════════════════════════ */
 var MEDIA = {
-  hero:     { tipo:"video", src:"/media/hero.mp4",     nombre:"Vídeo del hero" },
-  demo:     { tipo:"video", src:"/media/demo.mp4",     nombre:"Vídeo principal" },
+  hero:     { tipo:"video", src:"/media/hero.mp4", poster:"/media/hero-poster.jpg", nombre:"Vídeo del hero" },
+  demo:     { tipo:"video", src:"/media/demo.mp4", poster:"/media/demo-poster.jpg", nombre:"Vídeo principal" },
   habitos:  { tipo:"img",   src:"/media/habitos.jpg",  nombre:"Hábitos" },
   rutinas:  { tipo:"img",   src:"/media/rutinas.jpg",  nombre:"Rutinas" },
   vida:     { tipo:"img",   src:"/media/vida.jpg",     nombre:"Vida" },
@@ -439,6 +439,9 @@ function paint(el){
       v.muted=true;                     // Safari mira la propiedad, no el atributo
       // El del hero se ve nada más entrar; los de más abajo pueden esperar.
       v.preload = el.dataset.media==="hero" ? "auto" : "none";
+      // Red de seguridad: si un navegador se niega a autoreproducir o tarda
+      // en decodificar, se ve un fotograma real de la app y no un hueco negro.
+      if(m.poster) v.setAttribute("poster",m.poster);
       v.src=m.src;
       el.insertBefore(v,notch);
       VIDEOS.push(v);
