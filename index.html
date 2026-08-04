@@ -622,6 +622,9 @@ function urlPago(email,ref){
   }else{
     // El correo va rellenado: si no, el comprador tiene que volver a
     // escribir el que acaba de escribir aquí, y ahí se pierde gente.
+    // Comprobado el 4 ago 2026 en incógnito: llega prellenado. Hay que
+    // probarlo siempre así — con la sesión del dueño de la tienda el
+    // checkout ni siquiera enseña el campo, y la prueba no dice nada.
     q="checkout[email]="+encodeURIComponent(email)+
       "&checkout[custom][ref]="+encodeURIComponent(ref);
   }
