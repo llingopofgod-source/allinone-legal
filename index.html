@@ -430,10 +430,26 @@ var CONFIG = {
        tarjetas falsas: si se publica aquí, cualquiera puede "comprar" una
        plaza Founders sin pagar nada, y el contador de plazas se ensucia.
 
+       Estado al 4 ago 2026: la verificación de identidad está ENVIADA y
+       en revisión por Lemon Squeezy ("In Review"). Se corrigió el tipo de
+       cuenta: era "Empresa" (RFC de 12 caracteres, persona moral) y no
+       existe tal empresa; ahora va como particular, con el RFC de persona
+       física del titular. Lemon Squeezy tarda de 1 a 3 días hábiles en
+       lo que anuncia, pero en la práctica suele irse a semanas.
+
        Para encender el cobro de verdad:
-       1. Activar la tienda en Lemon Squeezy (identidad + cuenta bancaria).
+       1. Esperar a que la tienda quede activada (identidad + banco).
        2. Apagar el modo prueba y copiar el enlace de la tienda ya activa.
-       3. Pegarlo arriba en `enlace`. El botón cambia solo. */
+       3. Pegarlo arriba en `enlace`. El botón cambia solo.
+       4. En el producto, poner "Redirect to URL after purchase":
+          https://allinonehabits.online/gracias/   ← SIN esto, quien pague
+          se queda en la página de Lemon Squeezy y no vuelve a la landing.
+
+       OJO con Apple: mientras la app esté en revisión, encender el cobro
+       aquí es material para un rechazo por la guideline 3.1.1 (Premium
+       comprado fuera del IAP). La vía limpia son los códigos de oferta de
+       App Store Connect: el founder paga aquí y canjea el código en la
+       App Store, de modo que el desbloqueo sigue pasando por el IAP. */
   },
 
   supabaseUrl:"https://glqlyizfvuainaewqlad.supabase.co",
@@ -612,7 +628,7 @@ function urlPago(email,ref){
 // para que nunca prometan una cosa y hagan otra.
 btn.textContent = cobrando ? CONFIG.pago.textoBotonPago : "Reservar";
 $("fineTxt").textContent = cobrando
-  ? "Pago seguro con Stripe. Tu plaza Founders queda a tu nombre y recibes el código de acceso el día del lanzamiento."
+  ? "Pago seguro con Lemon Squeezy. Tu plaza Founders queda a tu nombre y recibes el código de acceso el día del lanzamiento."
   : "Reservar es gratis. El día del lanzamiento recibes tu código Founders para activar Premium al precio bloqueado desde la App Store.";
 
 form.addEventListener("submit",function(ev){
@@ -621,7 +637,7 @@ form.addEventListener("submit",function(ev){
   if(!/^\S+@\S+\.\S+$/.test(email)){say("Revisa el correo, parece incompleto.","err");input.focus();return}
   if(libres<=0){say("Las plazas Founders se han agotado.","err");return}
 
-  // Referencia corta para cruzar el pago de Stripe con esta fila.
+  // Referencia corta para cruzar el pago con esta fila.
   var ref = Date.now().toString(36) + Math.random().toString(36).slice(2,7);
 
   btn.disabled=true;
