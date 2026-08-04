@@ -441,9 +441,13 @@ var CONFIG = {
        1. Esperar a que la tienda quede activada (identidad + banco).
        2. Apagar el modo prueba y copiar el enlace de la tienda ya activa.
        3. Pegarlo arriba en `enlace`. El botón cambia solo.
-       4. En el producto, poner "Redirect to URL after purchase":
-          https://allinonehabits.online/gracias/   ← SIN esto, quien pague
-          se queda en la página de Lemon Squeezy y no vuelve a la landing.
+       4. La vuelta a /gracias/ YA está configurada (4 ago 2026). Ojo: Lemon
+          Squeezy no tiene "Redirect to URL after purchase"; lo que hay es
+          Producto → Confirmation modal, y ahí el "Button link" apunta a
+          https://allinonehabits.online/gracias/. Es un botón que el
+          comprador pulsa, NO un redirect automático: quien cierre el modal
+          se queda en Lemon Squeezy. El correo de confirmación es la red de
+          seguridad, así que no quitar el recibo por email.
 
        OJO con Apple: mientras la app esté en revisión, encender el cobro
        aquí es material para un rechazo por la guideline 3.1.1 (Premium
