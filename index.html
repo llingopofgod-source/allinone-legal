@@ -207,6 +207,11 @@ nav{max-width:var(--max);margin:0 auto;padding:0 20px;height:50px;display:flex;a
 .form input{flex:1;min-width:190px;font:400 16px/1 inherit;padding:16px 17px;border:1px solid var(--line);border-radius:14px;background:#fff;transition:border-color .2s,box-shadow .2s}
 .form input:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,113,227,.14)}
 .form .btn{padding:16px 28px;font-size:16px}
+.solo-ios{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:20px;
+  font-size:13.5px;color:var(--ink2);background:#FFF8E6;border:1px solid #F5E3B0;
+  border-radius:12px;padding:11px 15px;line-height:1.4;text-align:left}
+.solo-ios b{color:var(--ink);font-weight:600}
+.solo-ios svg{width:17px;height:17px;flex:none;stroke:#B08400;fill:none;stroke-width:1.6;stroke-linecap:round}
 .msg{margin-top:12px;font-size:14px;min-height:20px}
 .msg.ok{color:#1B7A38}.msg.err{color:#C7362F}
 .fine{font-size:12.5px;color:var(--muted);margin-top:14px;line-height:1.5}
@@ -324,6 +329,13 @@ footer a:hover{color:var(--ink)}
       <div class="now"><sup>$</sup><span id="pf2">5.99</span></div>
       <div class="per" id="perTxt">USD al mes · Premium completo</div>
       <div class="save" id="saveTxt">Ahorras <span id="psave">25</span>% de por vida</div>
+      <!-- Va ANTES del formulario a propósito: quien tenga Android tiene que
+           enterarse antes de pagar, no en el correo de después. Un reembolso
+           cuesta más que una venta perdida. -->
+      <p class="solo-ios">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18.5h2"/></svg>
+        Por ahora solo para <b>iPhone</b>. La versión de Android llega después.
+      </p>
       <form class="form" id="rsv" novalidate>
         <input id="email" type="email" required autocomplete="email" inputmode="email" placeholder="tu@correo.com" aria-label="Tu correo">
         <button class="btn btn-blue" type="submit" id="rsvBtn">Reservar</button>
@@ -355,6 +367,7 @@ footer a:hover{color:var(--ink)}
       <details><summary>¿Cómo recibo mi acceso?</summary><p id="faqAcceso">Un correo con tu código único. Lo canjeas en la App Store y Premium queda activo al precio Founders.</p></details>
       <details><summary>¿Tengo que pagar hoy?</summary><p id="faqPago">No. Reservar es gratis. Sólo pagas al canjear tu código, desde tu cuenta de Apple.</p></details>
       <details><summary>¿Puedo cancelar cuando quiera?</summary><p id="faqCancelar">Sí, en dos toques desde los ajustes de tu Apple ID. Además hay 7 días de prueba gratis.</p></details>
+      <details><summary>¿Funciona en Android?</summary><p>Todavía no. AllInOne sale primero en iPhone y la versión de Android llega después. Si compras ahora y no tienes iPhone, escríbeme y te devuelvo el dinero sin preguntas.</p></details>
       <details><summary>¿Qué incluye Premium?</summary><p>Guía IA completa, análisis de comidas por foto, la sección Vida entera, rutinas guiadas y misiones exclusivas.</p></details>
       <details><summary>¿Y si se acaban las plazas?</summary><p>Cuando las <span id="tot2">100</span> estén ocupadas se cierra. Después se entra a $<span id="pn2">7.99</span>/mes.</p></details>
     </div>
