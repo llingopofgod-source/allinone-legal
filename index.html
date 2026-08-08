@@ -8,12 +8,26 @@
 <link rel="canonical" href="https://allinonehabits.online/">
 <link rel="icon" href="/logo.png">
 <link rel="apple-touch-icon" href="/logo.png">
+<!-- El póster del hero es lo primero que se ve. Pedirlo desde el <head> lo
+     adelanta a que el script cree el <video>, así la primera pantalla deja de
+     estar en negro mientras se decide el vídeo. -->
+<link rel="preload" as="image" href="/media/hero-poster.jpg" fetchpriority="high">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="AllInOne">
+<meta property="og:locale" content="es_MX">
 <meta property="og:title" content="AllInOne — Founders Edition">
-<meta property="og:description" content="Una sola app para todo tu día. 100 plazas Founders.">
-<meta property="og:image" content="https://allinonehabits.online/logo.png">
+<meta property="og:description" content="Hábitos, IA, rutinas, sueño y entrenamientos en una sola app. 100 plazas Founders a $5.99.">
+<!-- 1200×630: el formato que piden WhatsApp, Instagram y X. Antes iba logo.png,
+     que es cuadrado de 1024, y salía recortado o diminuto. Se genera con make-og.py -->
+<meta property="og:image" content="https://allinonehabits.online/og.jpg?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AllInOne — Tu vida entera. Una sola app.">
 <meta property="og:url" content="https://allinonehabits.online/">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AllInOne — Founders Edition">
+<meta name="twitter:description" content="Hábitos, IA, rutinas, sueño y entrenamientos en una sola app. 100 plazas Founders a $5.99.">
+<meta name="twitter:image" content="https://allinonehabits.online/og.jpg?v=2">
 <meta name="theme-color" content="#FFFFFF">
 
 <style>
@@ -51,8 +65,15 @@ header.stuck{border-bottom-color:var(--line)}
 nav{max-width:var(--max);margin:0 auto;padding:0 20px;height:50px;display:flex;align-items:center;justify-content:space-between}
 .brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:15.5px}
 .brand img{width:25px;height:25px;border-radius:7px}
-.nav-btn{background:var(--ink);color:#fff;font-size:13.5px;font-weight:500;padding:8px 17px;border-radius:980px;transition:transform .25s}
+.nav-btn{background:var(--ink);color:#fff;font-size:13.5px;font-weight:500;padding:8px 17px;border-radius:980px;transition:transform .25s;white-space:nowrap}
 .nav-btn:hover{transform:scale(1.04)}
+/* Con el cobro encendido el botón pasa a decir "Entrar como Founder", que es
+   más largo: en un iPhone SE quedaban 5px entre el logo y el botón. */
+@media(max-width:380px){
+  .nav-btn{font-size:12.5px;padding:7px 13px}
+  .brand{font-size:14.5px;gap:7px}
+  .brand img{width:22px;height:22px}
+}
 
 /* ── Botones ─────────────────────────────────────────────────────── */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--ink);color:#fff;border:0;cursor:pointer;
@@ -177,6 +198,12 @@ nav{max-width:var(--max);margin:0 auto;padding:0 20px;height:50px;display:flex;a
 .per{font-size:14.5px;color:var(--muted)}
 .save{display:inline-block;margin-top:16px;background:#E7F8EC;color:#1B7A38;font-size:13px;font-weight:600;padding:8px 15px;border-radius:999px}
 .form{display:flex;gap:9px;margin-top:26px;flex-wrap:wrap}
+/* En móvil el botón ya se envolvía a la línea de abajo, pero quedaba a medio
+   ancho y descolocado. Ocupando la fila entera es el destino obvio del pulgar. */
+@media(max-width:520px){
+  .form{flex-direction:column}
+  .form input,.form .btn{width:100%;min-width:0}
+}
 .form input{flex:1;min-width:190px;font:400 16px/1 inherit;padding:16px 17px;border:1px solid var(--line);border-radius:14px;background:#fff;transition:border-color .2s,box-shadow .2s}
 .form input:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,113,227,.14)}
 .form .btn{padding:16px 28px;font-size:16px}
@@ -200,8 +227,13 @@ details[open] summary::after{transform:translateY(-20%) rotate(225deg)}
 details p{padding:0 0 21px;font-size:15.5px;line-height:1.6}
 footer{border-top:1px solid var(--line);padding:38px 0;font-size:13px;color:var(--muted)}
 .f-in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
-.f-links{display:flex;gap:20px;flex-wrap:wrap}
+.f-links{display:flex;gap:12px;flex-wrap:wrap}
 footer a:hover{color:var(--ink)}
+/* Medidos en un iPhone SE daban 20px de alto: casi imposible acertarles con el
+   pulgar. El área de toque sube a 44px (el mínimo que recomienda Apple) sin
+   que cambie nada de lo que se ve. */
+.f-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 8px}
+.nav-btn{min-height:36px;display:inline-flex;align-items:center}
 </style>
 </head>
 <body>
@@ -209,7 +241,7 @@ footer a:hover{color:var(--ink)}
 <header id="hdr">
   <nav>
     <a class="brand" href="/"><img src="/logo.png" alt="" width="25" height="25">AllInOne</a>
-    <a class="nav-btn" href="#reservar">Reservar plaza</a>
+    <a class="nav-btn" id="navBtn" href="#reservar">Reservar plaza</a>
   </nav>
 </header>
 
@@ -290,8 +322,8 @@ footer a:hover{color:var(--ink)}
       <span class="flag">Founders · <span id="left3">–</span> plazas libres</span>
       <div class="was">$<span id="pn1">7.99</span> USD/mes</div>
       <div class="now"><sup>$</sup><span id="pf2">5.99</span></div>
-      <div class="per">USD al mes · Premium completo</div>
-      <div class="save">Ahorras <span id="psave">25</span>% de por vida</div>
+      <div class="per" id="perTxt">USD al mes · Premium completo</div>
+      <div class="save" id="saveTxt">Ahorras <span id="psave">25</span>% de por vida</div>
       <form class="form" id="rsv" novalidate>
         <input id="email" type="email" required autocomplete="email" inputmode="email" placeholder="tu@correo.com" aria-label="Tu correo">
         <button class="btn btn-blue" type="submit" id="rsvBtn">Reservar</button>
@@ -494,8 +526,12 @@ function paint(el){
       // Red de seguridad: si un navegador se niega a autoreproducir o tarda
       // en decodificar, se ve un fotograma real de la app y no un hueco negro.
       if(m.poster) v.setAttribute("poster",m.poster);
-      v.src=m.src;
+      // Primero al DOM y después el src. Al revés, el navegador arranca la
+      // descarga con el elemento suelto y vuelve a arrancarla al insertarlo:
+      // medido en producción, hero.mp4 se bajaba DOS veces (1,4 MB de más en
+      // un móvil que viene de Instagram con datos).
       el.insertBefore(v,notch);
+      v.src=m.src;
       VIDEOS.push(v);
       // Algunos navegadores ignoran el autoplay de un elemento insertado por
       // JS. Pedirlo a mano cuesta nada y cubre ese caso.
@@ -639,6 +675,7 @@ $("fineTxt").textContent = cobrando
   : "Reservar es gratis. El día del lanzamiento recibes tu código Founders para activar Premium al precio bloqueado desde la App Store.";
 
 var textos = {
+  navBtn:      ["Reservar plaza",                          "Entrar como Founder"],
   heroCta:     ["Reservar mi plaza",                       "Entrar como Founder"],
   heroFine:    ["Sin pago hoy · Precio bloqueado de por vida",
                 "Pago único de $" + CONFIG.precioFounders.toFixed(2) + " · Tu primer mes desde el día uno"],
@@ -647,7 +684,15 @@ var textos = {
   faqPago:     ["No. Reservar es gratis. Sólo pagas al canjear tu código, desde tu cuenta de Apple.",
                 "Sí. Los $" + CONFIG.precioFounders.toFixed(2) + " de hoy cubren tu primer mes de Premium completo y apartan tu plaza Founders."],
   faqCancelar: ["Sí, en dos toques desde los ajustes de tu Apple ID. Además hay 7 días de prueba gratis.",
-                "No hay suscripción que cancelar: es un pago único por un mes. Al acabar decides si sigues, al precio Founders."]
+                "No hay suscripción que cancelar: es un pago único por un mes. Al acabar decides si sigues, al precio Founders."],
+  // Lo que se cobra es un pago ÚNICO por un mes, no una suscripción. Dejar
+  // "USD al mes" con el cobro encendido hace creer que hay cargo recurrente:
+  // unos no compran por miedo al compromiso y otros esperan un cobro que no
+  // llega. Las dos cosas cuestan dinero.
+  perTxt:      ["USD al mes · Premium completo",
+                "USD pago único · 1 mes de Premium completo"],
+  saveTxt:     ["Ahorras " + Math.round((1-CONFIG.precioFounders/CONFIG.precioNormal)*100) + "% de por vida",
+                "Ahorras " + Math.round((1-CONFIG.precioFounders/CONFIG.precioNormal)*100) + "% sobre el precio normal"]
 };
 Object.keys(textos).forEach(function(id){
   var el = $(id); if (el) el.textContent = textos[id][cobrando ? 1 : 0];
@@ -680,6 +725,11 @@ form.addEventListener("submit",function(ev){
     form.style.display="none";
     say("Plaza reservada. Te escribo a "+email+" el día del lanzamiento.","ok");
   }).catch(function(){
+    // Cuando se está cobrando, guardar la fila es lo secundario: lo que no se
+    // puede perder es la venta. Si Supabase falla (red, RLS, lo que sea) se
+    // manda igual al checkout — el correo viaja en la URL y Stripe deja el
+    // registro del pago, así que la reserva se puede reconstruir después.
+    if(cobrando){ location.href = urlPago(email,ref); return }
     btn.disabled=false;
     say("No se pudo guardar. Inténtalo otra vez o escríbeme a allinone.support.app@gmail.com","err");
   });
