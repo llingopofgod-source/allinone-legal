@@ -812,6 +812,38 @@ try{
   }
 }catch(e){}
 
+/* ── Contador de visitas ────────────────────────────────────────────
+   GitHub Pages no da estadísticas, así que la visita se anota en la misma
+   base de datos que las reservas (tabla page_views, insert-only con la clave
+   pública). Sin cookies y sin datos personales: el session_id es aleatorio y
+   vive en sessionStorage, así que muere al cerrar la pestaña — sirve para no
+   contar diez veces a quien recarga, no para seguir a nadie.
+
+   Va dentro de try/catch y sin await deliberadamente: si Supabase falla, o el
+   navegador tiene sessionStorage bloqueado, o alguien usa un bloqueador, la
+   página tiene que seguir funcionando igual. Contar visitas nunca puede
+   romper la venta. */
+try{
+  var sid;
+  try{
+    sid=sessionStorage.getItem("aio_s");
+    if(!sid){ sid=Math.random().toString(36).slice(2,12); sessionStorage.setItem("aio_s",sid) }
+  }catch(e){ sid=null }  // modo privado o storage bloqueado: se cuenta la visita sin id
+
+  fetch(CONFIG.supabaseUrl+"/rest/v1/page_views",{
+    method:"POST",
+    headers:{"apikey":CONFIG.supabaseKey,"Authorization":"Bearer "+CONFIG.supabaseKey,
+             "Content-Type":"application/json","Prefer":"return=minimal"},
+    body:JSON.stringify({
+      path:      location.pathname,
+      referrer:  document.referrer ? document.referrer.slice(0,300) : null,
+      session_id:sid,
+      screen_w:  window.innerWidth || null
+    }),
+    keepalive:true  // que el insert sobreviva si se van de la página al instante
+  }).catch(function(){});
+}catch(e){}
+
 /* ── Las URLs legales antiguas apuntaban a la raíz ──────────────── */
 var h=location.hash;
 if(h==="#privacidad"||h==="#terminos") location.replace("/legal/"+h);
