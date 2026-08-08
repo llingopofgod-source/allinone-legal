@@ -472,7 +472,7 @@ var CONFIG = {
      ──────────────────────────────────────────────────────────────── */
   pago: {
     proveedor: "stripe",           // o "lemonsqueezy"
-    enlace: "https://buy.stripe.com/5kQ7sMf7A7KA7VU5Cng3600",
+    enlace: "https://buy.stripe.com/fZueVe5x0e8Y0tsfcXg3601",
     textoBotonPago: "Pagar $5.99 y entrar"
 
     /* ── STRIPE (decidido el 7 ago 2026) ───────────────────────────
@@ -693,8 +693,11 @@ function urlPago(email,ref){
 // nada y el código se canjea en la App Store; en modo cobro se paga hoy y el
 // código se canjea dentro de la app. Decir lo que no es acaba en devoluciones.
 btn.textContent = cobrando ? CONFIG.pago.textoBotonPago : "Reservar";
+// Desde México se cobra en pesos, no en dólares: el checkout enseña MXN 99 y
+// aquí pone 5,99 USD. Sin avisarlo, quien lo vea piensa que le están cobrando
+// otra cosa y se sale.
 $("fineTxt").textContent = cobrando
-  ? "Pago seguro con Stripe. Tu plaza Founders queda a tu nombre y recibes el código de acceso el día del lanzamiento."
+  ? "Pago seguro con Stripe. Desde México se cobran $99 MXN. Tu plaza Founders queda a tu nombre y recibes el código de acceso el día del lanzamiento."
   : "Reservar es gratis. El día del lanzamiento recibes tu código Founders para activar Premium al precio bloqueado desde la App Store.";
 
 var textos = {
