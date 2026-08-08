@@ -2,74 +2,135 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Bienvenido al Founders Club — AllInOne</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="/logo.png">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:32px 20px;
-  background:#fff;color:#06060A;text-align:center;
+:root{--ink:#06060A;--ink2:#42424A;--muted:#86868B;--blue:#0071E3;--line:rgba(0,0,0,.08)}
+html{-webkit-text-size-adjust:100%}
+body{min-height:100svh;padding:40px 20px 56px;background:#fff;color:var(--ink);
   font:400 17px/1.5 -apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Inter,Roboto,sans-serif;
   letter-spacing:-.012em;-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden}
 body::before{content:"";position:absolute;width:min(900px,150vw);height:min(900px,150vw);left:50%;top:-46%;
   transform:translateX(-50%);border-radius:50%;z-index:-1;
   background:radial-gradient(circle,#D6E8FF,rgba(234,243,255,.35) 46%,transparent 68%);filter:blur(24px)}
-main{max-width:460px;width:100%}
-.mark{width:74px;height:74px;border-radius:20px;margin:0 auto 26px;display:grid;place-items:center;
-  background:#06060A;box-shadow:0 18px 40px -18px rgba(0,60,140,.6);animation:pop .7s cubic-bezier(.16,1,.3,1) both}
-.mark svg{width:34px;height:34px;stroke:#fff;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;
-  stroke-dasharray:32;stroke-dashoffset:32;animation:draw .6s .35s cubic-bezier(.16,1,.3,1) forwards}
-@keyframes pop{from{transform:scale(.7);opacity:0}to{transform:none;opacity:1}}
+main{max-width:480px;margin:0 auto;text-align:center}
+img,svg{display:block}
+
+/* ── Entrada escalonada. La página anterior no se movía nada: aparecía de
+   golpe y ya. Aquí cada bloque entra detrás del anterior, que es lo que hace
+   que se sienta que algo ha pasado. ────────────────────────────────────── */
+.rv{opacity:0;transform:translateY(16px);animation:rv .7s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes rv{to{opacity:1;transform:none}}
+.d1{animation-delay:.25s}.d2{animation-delay:.4s}.d3{animation-delay:.55s}
+.d4{animation-delay:.7s}.d5{animation-delay:.85s}
+
+.mark{width:78px;height:78px;border-radius:22px;margin:0 auto 26px;display:grid;place-items:center;
+  background:linear-gradient(160deg,#0071E3,#0058B0);
+  box-shadow:0 18px 40px -16px rgba(0,90,200,.75);animation:pop .75s cubic-bezier(.34,1.56,.64,1) both}
+.mark svg{width:36px;height:36px;stroke:#fff;fill:none;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:32;stroke-dashoffset:32;animation:draw .5s .45s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes pop{from{transform:scale(.5);opacity:0}to{transform:none;opacity:1}}
 @keyframes draw{to{stroke-dashoffset:0}}
-h1{font-size:clamp(30px,7vw,40px);font-weight:600;letter-spacing:-.035em;line-height:1.08}
-p{color:#42424A;margin-top:16px;font-size:17px}
-.card{margin-top:30px;border:1px solid rgba(0,0,0,.08);border-radius:20px;padding:26px 22px;text-align:left;
+
+h1{font-size:clamp(32px,8vw,44px);font-weight:600;letter-spacing:-.035em;line-height:1.08}
+.sub{color:var(--ink2);margin-top:14px;font-size:17px}
+.badge{display:inline-flex;align-items:center;gap:8px;margin-top:20px;background:#F0F6FF;border:1px solid #D6E8FF;
+  color:#0058B0;font-size:13.5px;font-weight:600;padding:9px 16px;border-radius:999px}
+.badge svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+.card{margin-top:32px;border:1px solid var(--line);border-radius:22px;padding:26px 22px;text-align:left;
   background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.04),0 16px 40px -18px rgba(0,0,0,.16)}
-.card b{display:block;font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#86868B;margin-bottom:14px}
-ol{list-style:none;counter-reset:s;display:grid;gap:13px}
-ol li{counter-increment:s;display:flex;gap:12px;align-items:flex-start;font-size:15.5px;color:#42424A;line-height:1.45}
-ol li::before{content:counter(s);flex:none;width:22px;height:22px;border-radius:50%;background:#EEF5FF;color:#0071E3;
-  font-size:12px;font-weight:600;display:grid;place-items:center;margin-top:1px}
-.btn{display:inline-flex;align-items:center;justify-content:center;margin-top:30px;background:#06060A;color:#fff;
-  font-weight:600;font-size:16px;padding:16px 32px;border-radius:980px;text-decoration:none;
-  box-shadow:0 1px 2px rgba(0,0,0,.1),0 12px 30px -14px rgba(0,0,0,.6);transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.tag{display:block;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:18px}
+
+/* Cada paso es una fila de dos columnas: número y texto. El texto va SIEMPRE
+   dentro de un <span>. Sin él, cada trozo suelto y cada <b> se convierten en
+   items del flex y la frase sale partida en columnas. Es lo que rompía la
+   versión anterior. */
+ol{list-style:none;counter-reset:s;display:grid;gap:16px}
+ol li{counter-increment:s;display:flex;gap:13px;align-items:flex-start;
+  font-size:15.5px;color:var(--ink2);line-height:1.5}
+ol li::before{content:counter(s);flex:none;width:23px;height:23px;border-radius:50%;background:#EEF5FF;
+  color:var(--blue);font-size:12px;font-weight:600;display:grid;place-items:center;margin-top:2px}
+ol li span{flex:1}
+ol li b{font-weight:600;color:var(--ink)}
+
+/* Lo que se lleva. Antes no se decía en ningún sitio: pagabas y la página
+   sólo hablaba de trámites. */
+.perks{margin-top:14px;display:grid;gap:11px}
+.perk{display:flex;gap:11px;align-items:flex-start;font-size:15px;color:var(--ink2);line-height:1.45}
+.perk svg{width:19px;height:19px;flex:none;margin-top:1px;stroke:#1B9E4B;fill:none;stroke-width:2.4;
+  stroke-linecap:round;stroke-linejoin:round}
+.perk span{flex:1}
+
+.aviso{margin-top:20px;font-size:13.5px;line-height:1.5;color:var(--ink2);text-align:left;
+  background:#FFF8E6;border:1px solid #F5E3B0;border-radius:14px;padding:13px 16px;
+  display:flex;gap:10px;align-items:flex-start}
+.aviso svg{width:17px;height:17px;flex:none;margin-top:2px;stroke:#B08400;fill:none;stroke-width:1.8;stroke-linecap:round}
+.aviso span{flex:1}
+.aviso b{color:var(--ink);font-weight:600}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;margin-top:32px;background:var(--ink);color:#fff;
+  font-weight:600;font-size:16px;padding:16px 32px;border-radius:980px;text-decoration:none;min-height:52px;
+  box-shadow:0 1px 2px rgba(0,0,0,.1),0 12px 30px -14px rgba(0,0,0,.6);
+  transition:transform .3s cubic-bezier(.16,1,.3,1)}
 .btn:hover{transform:translateY(-3px)}
-.aviso{margin-top:18px;font-size:13.5px;line-height:1.45;color:#42424A;text-align:left;
-  background:#FFF8E6;border:1px solid #F5E3B0;border-radius:12px;padding:12px 15px}
-.aviso b{color:#06060A;font-weight:600}
-.card ol li b{display:inline;font-size:inherit;font-weight:600;letter-spacing:normal;
-  text-transform:none;color:#06060A;margin:0}
-.foot{margin-top:22px;font-size:13px;color:#86868B}
-.foot a{color:#0071E3;text-decoration:none}
-@media(prefers-reduced-motion:reduce){.mark,.mark svg{animation:none;stroke-dashoffset:0}}
+.foot{margin-top:22px;font-size:13px;color:var(--muted);line-height:1.6}
+.foot a{color:var(--blue);text-decoration:none}
+@media(prefers-reduced-motion:reduce){
+  .rv,.mark,.mark svg{animation:none;opacity:1;transform:none;stroke-dashoffset:0}
+}
 </style>
 </head>
 <body>
 <main>
   <div class="mark"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
-  <h1>Ya eres Founder</h1>
-  <p>Tu plaza queda a tu nombre. Eres de los cien primeros.</p>
 
-  <div class="card">
-    <b>Qué pasa ahora</b>
+  <h1 class="rv d1">Ya eres Founder</h1>
+  <p class="sub rv d1">Tu plaza queda a tu nombre. Eres de los cien primeros.</p>
+
+  <span class="badge rv d2">
+    <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+    Pago confirmado
+  </span>
+
+  <div class="card rv d3">
+    <span class="tag">Lo que acabas de desbloquear</span>
+    <div class="perks">
+      <div class="perk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><b>Un mes de Premium completo</b>, desde el primer día.</span></div>
+      <div class="perk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>La <b>guía con IA</b> que lee tus hábitos, tu sueño y tu comida, y te escribe consejos que no se repiten.</span></div>
+      <div class="perk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><b>Comidas por foto</b>: le sacas foto al plato y salen calorías y macros.</span></div>
+      <div class="perk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><b>Vida al completo</b>: puntuación diaria, batería corporal, estrés y preparación.</span></div>
+      <div class="perk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><b>Insignia Founder</b> permanente. Sólo cien personas la van a tener.</span></div>
+    </div>
+  </div>
+
+  <div class="card rv d4">
+    <span class="tag">Qué pasa ahora</span>
     <ol>
-      <li>Stripe te manda el recibo del pago. <b>Guárdalo</b>: es tu comprobante.</li>
-      <li>El día del lanzamiento te escribo con <b>tu código Founders</b>, al mismo correo con el que pagaste.</li>
-      <li>Abres AllInOne, entras en Premium y pulsas <b>«¿Tienes un código promocional?»</b>.</li>
-      <li>Escribes el código y tu mes de Premium se activa al momento.</li>
+      <li><span>Te llega el <b>recibo del pago</b> por correo. Guárdalo: es tu comprobante.</span></li>
+      <li><span>El día del lanzamiento te escribo con <b>tu código Founders</b>, al mismo correo con el que pagaste.</span></li>
+      <li><span>Abres AllInOne, entras en Premium y pulsas <b>«¿Tienes un código promocional?»</b>.</span></li>
+      <li><span>Escribes el código y tu mes de Premium <b>se activa al momento</b>.</span></li>
     </ol>
   </div>
 
-  <!-- Quien acaba de pagar es justo quien más necesita saber esto, por si
-       compró sin fijarse. Devolver es mejor que un cliente atrapado. -->
-  <p class="aviso">
-    AllInOne sale primero en <b>iPhone</b>. Si no tienes uno, escríbeme y te
-    devuelvo el dinero sin preguntas.
+  <p class="aviso rv d5">
+    <svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18.5h2"/></svg>
+    <span>AllInOne sale primero en <b>iPhone</b>. Si no tienes uno, escríbeme y te devuelvo el dinero sin preguntas.</span>
   </p>
 
-  <a class="btn" href="/">Volver al inicio</a>
-  <p class="foot">¿Alguna duda? Escríbeme a <a href="mailto:allinone.support.app@gmail.com">allinone.support.app@gmail.com</a></p>
+  <a class="btn rv d5" href="/">Volver al inicio</a>
+  <p class="foot rv d5">¿Alguna duda? Escríbeme a <a href="mailto:allinone.support.app@gmail.com">allinone.support.app@gmail.com</a><br>Te contesto yo, no un robot.</p>
 </main>
+
+<script>
+// Quien llega aquí es que ha pagado. Se deja marcado para que la portada lo
+// reconozca al volver, en vez de volver a ofrecerle la plaza que ya compró.
+try{ localStorage.setItem('allinone_founder', new Date().toISOString()); }catch(e){}
+</script>
 </body>
 </html>

@@ -599,6 +599,29 @@ $("perks").innerHTML=CONFIG.beneficios.map(function(b){
 
 /* ── Cifras ─────────────────────────────────────────────────────── */
 ["left1","left2","left3"].forEach(function(i){set(i,libres)});
+
+/* ── Plazas vendidas, preguntadas a la base de datos ────────────────
+   `plazasVendidas` del CONFIG es sólo el valor de arranque: si hubiera que
+   editarlo a mano en cada venta, haría falta un deploy por compra y el
+   contador acabaría clavado (que es justo lo que pasó con la primera).
+   La RPC devuelve un número y nada más — `founders_waitlist` no se puede
+   leer con la anon key, y así sigue siendo. */
+fetch(CONFIG.supabaseUrl+"/rest/v1/rpc/founders_vendidas",{
+  method:"POST",
+  headers:{"apikey":CONFIG.supabaseKey,"Authorization":"Bearer "+CONFIG.supabaseKey,
+           "Content-Type":"application/json"},
+  body:"{}"
+}).then(function(r){ return r.ok ? r.json() : null })
+  .then(function(n){
+    if(typeof n!=="number" || n<0) return;           // si falla, se queda el del CONFIG
+    CONFIG.plazasVendidas = n;
+    libres = Math.max(0, CONFIG.plazasTotales - n);
+    ["left1","left2","left3"].forEach(function(i){set(i,libres)});
+    // Se busca el botón por id y no por la variable `btn`, que se declara más
+    // abajo: esto llega por red y no conviene que dependa del orden del script.
+    var b=$("rsvBtn");
+    if(libres<=0 && b){ b.disabled=true; b.textContent="Plazas agotadas" }
+  }).catch(function(){});
 ["tot1","tot2"].forEach(function(i){set(i,CONFIG.plazasTotales)});
 ["pn1","pn2"].forEach(function(i){set(i,CONFIG.precioNormal.toFixed(2))});
 ["pf1","pf2"].forEach(function(i){set(i,CONFIG.precioFounders.toFixed(2))});
@@ -766,6 +789,28 @@ form.addEventListener("submit",function(ev){
     say("No se pudo guardar. Inténtalo otra vez o escríbeme a allinone.support.app@gmail.com","err");
   });
 });
+
+/* ── Si ya compró, la página deja de venderle ───────────────────────
+   /gracias/ deja una marca en localStorage. Sin esto, el Founder que vuelve
+   se encuentra la misma página que antes de pagar, con el contador, la
+   cuenta atrás y el botón de comprar: parece que su compra no existió. */
+try{
+  if(localStorage.getItem("allinone_founder")){
+    var caja=document.querySelector(".price");
+    if(caja){
+      caja.innerHTML =
+        '<span class="flag">Ya eres Founder</span>'+
+        '<h3 style="margin:18px 0 10px;font-size:26px">Tu plaza está guardada</h3>'+
+        '<p style="max-width:34ch;margin:0 auto">El día del lanzamiento te escribo con tu código a tu correo. '+
+        'No tienes que hacer nada más.</p>'+
+        '<p class="fine" style="margin-top:20px">¿Algo no cuadra? Escríbeme a '+
+        '<a href="mailto:allinone.support.app@gmail.com" style="color:var(--blue)">allinone.support.app@gmail.com</a></p>';
+    }
+    var navb=$("navBtn"); if(navb) navb.textContent="Ya eres Founder";
+    var hcta=$("heroCta"); if(hcta) hcta.textContent="Tu plaza está guardada";
+    var hfine=$("heroFine"); if(hfine) hfine.textContent="Te escribo el día del lanzamiento";
+  }
+}catch(e){}
 
 /* ── Las URLs legales antiguas apuntaban a la raíz ──────────────── */
 var h=location.hash;
