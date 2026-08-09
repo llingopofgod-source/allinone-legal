@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>AllInOne — Founders Edition</title>
-<meta name="description" content="Hábitos, IA, rutinas, sueño y entrenamientos en una sola app. 100 plazas Founders con precio bloqueado para siempre.">
+<meta name="description" content="Hábitos, IA, rutinas, sueño y entrenamientos en una sola app. 100 plazas Founders: tu primer mes de Premium por $5.99, pago único.">
 <link rel="canonical" href="https://allinonehabits.online/">
 <link rel="icon" href="/logo.png">
 <link rel="apple-touch-icon" href="/logo.png">
@@ -268,7 +268,7 @@ footer a:hover{color:var(--ink)}
     <div class="meter rv">
       <div class="mt"><u>Cierra en</u><b id="cdown">–</b></div>
       <div class="mt"><u>Plazas libres</u><b id="left2">–<i> / <span id="tot1">100</span></i></b></div>
-      <div class="mt"><u>Founders</u><b>$<span id="pf1">5.99</span><i>/mes</i></b></div>
+      <div class="mt"><u>Founders</u><b>$<span id="pf1">5.99</span><i id="pf1u">/mes</i></b></div>
     </div>
   </div>
 </section>
@@ -747,7 +747,12 @@ var textos = {
   perTxt:      ["USD al mes · Premium completo",
                 "USD pago único · 1 mes de Premium completo"],
   saveTxt:     ["Ahorras " + Math.round((1-CONFIG.precioFounders/CONFIG.precioNormal)*100) + "% de por vida",
-                "Ahorras " + Math.round((1-CONFIG.precioFounders/CONFIG.precioNormal)*100) + "% sobre el precio normal"]
+                "Ahorras " + Math.round((1-CONFIG.precioFounders/CONFIG.precioNormal)*100) + "% sobre el precio normal"],
+  // El contador del hero decía "/mes" fijo en el HTML y se quedaba fuera de
+  // este objeto. Con el cobro encendido es lo primero que se ve al entrar y
+  // lo que más se comparte en captura: dejarlo prometía una mensualidad
+  // donde hay un pago único.
+  pf1u:        ["/mes",                                    " pago único"]
 };
 Object.keys(textos).forEach(function(id){
   var el = $(id); if (el) el.textContent = textos[id][cobrando ? 1 : 0];
