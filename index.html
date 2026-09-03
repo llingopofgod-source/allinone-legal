@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>AllInOne — Founders Edition</title>
-<meta name="description" content="Hábitos, IA, rutinas, sueño y entrenamientos en una sola app. 100 plazas Founders: tu primer mes de Premium por $5.99, pago único.">
+<title>AllInOne — Tu vida entera. Una sola app.</title>
+<meta name="description" content="Hábitos, IA, rutinas, sueño, nutrición y entrenamientos en una sola app. Míralo en vídeo y descárgala gratis para iPhone.">
 <link rel="canonical" href="https://allinonehabits.online/">
 <link rel="icon" href="/logo.png">
 <link rel="apple-touch-icon" href="/logo.png">
@@ -15,19 +15,19 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="AllInOne">
 <meta property="og:locale" content="es_MX">
-<meta property="og:title" content="AllInOne — Founders Edition">
-<meta property="og:description" content="Hábitos, IA, rutinas, sueño y entrenamientos en una sola app. 100 plazas Founders a $5.99.">
+<meta property="og:title" content="AllInOne — Tu vida entera. Una sola app.">
+<meta property="og:description" content="Hábitos, IA, rutinas, sueño, nutrición y entrenamientos en una sola app. Ya disponible para iPhone.">
 <!-- 1200×630: el formato que piden WhatsApp, Instagram y X. Antes iba logo.png,
      que es cuadrado de 1024, y salía recortado o diminuto. Se genera con make-og.py -->
-<meta property="og:image" content="https://allinonehabits.online/og.jpg?v=2">
+<meta property="og:image" content="https://allinonehabits.online/og.jpg?v=3">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="AllInOne — Tu vida entera. Una sola app.">
 <meta property="og:url" content="https://allinonehabits.online/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AllInOne — Founders Edition">
-<meta name="twitter:description" content="Hábitos, IA, rutinas, sueño y entrenamientos en una sola app. 100 plazas Founders a $5.99.">
-<meta name="twitter:image" content="https://allinonehabits.online/og.jpg?v=2">
+<meta name="twitter:title" content="AllInOne — Tu vida entera. Una sola app.">
+<meta name="twitter:description" content="Hábitos, IA, rutinas, sueño, nutrición y entrenamientos en una sola app. Ya disponible para iPhone.">
+<meta name="twitter:image" content="https://allinonehabits.online/og.jpg?v=3">
 <meta name="theme-color" content="#FFFFFF">
 
 <style>
@@ -67,8 +67,6 @@ nav{max-width:var(--max);margin:0 auto;padding:0 20px;height:50px;display:flex;a
 .brand img{width:25px;height:25px;border-radius:7px}
 .nav-btn{background:var(--ink);color:#fff;font-size:13.5px;font-weight:500;padding:8px 17px;border-radius:980px;transition:transform .25s;white-space:nowrap}
 .nav-btn:hover{transform:scale(1.04)}
-/* Con el cobro encendido el botón pasa a decir "Entrar como Founder", que es
-   más largo: en un iPhone SE quedaban 5px entre el logo y el botón. */
 @media(max-width:380px){
   .nav-btn{font-size:12.5px;padding:7px 13px}
   .brand{font-size:14.5px;gap:7px}
@@ -85,6 +83,26 @@ nav{max-width:var(--max);margin:0 auto;padding:0 20px;height:50px;display:flex;a
 .btn:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
 .btn-blue{background:var(--blue);box-shadow:0 1px 2px rgba(0,0,0,.1),0 14px 34px -14px rgba(0,113,227,.9)}
 .btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
+
+/* ── Botones de tienda ───────────────────────────────────────────── */
+.stores{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.store{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:#fff;
+  padding:12px 24px 12px 20px;border-radius:16px;min-height:58px;
+  box-shadow:0 1px 2px rgba(0,0,0,.1),0 14px 34px -16px rgba(0,0,0,.7);
+  transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s}
+.store:hover{transform:translateY(-3px);box-shadow:0 1px 2px rgba(0,0,0,.1),0 24px 46px -18px rgba(0,0,0,.6)}
+.store:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
+.store svg{width:26px;height:26px;fill:currentColor;flex:none}
+.store span{display:block;font-size:11px;line-height:1.15;color:rgba(255,255,255,.66);letter-spacing:.01em}
+.store b{display:block;font-size:18px;font-weight:600;letter-spacing:-.03em;margin-top:2px}
+/* La ficha de Google Play todavía no es pública. En vez de esconder el botón
+   o dejar un enlace que lleva a un 404, se enseña apagado y diciendo por qué:
+   quien tiene Android se entera de que existe y de que aún no puede. */
+.store.pronto{background:var(--bg2);color:var(--ink2);box-shadow:none;cursor:default;border:1px solid var(--line)}
+.store.pronto:hover{transform:none;box-shadow:none}
+.store.pronto span{color:var(--muted)}
+.store.pronto b{color:var(--ink)}
+@media(max-width:520px){.stores{flex-direction:column}.store{width:100%}}
 
 /* ── Teléfono ────────────────────────────────────────────────────── */
 .phone{position:relative;width:var(--pw,280px);aspect-ratio:9/19.5;flex:none;margin:0 auto;
@@ -122,7 +140,7 @@ nav{max-width:var(--max);margin:0 auto;padding:0 20px;height:50px;display:flex;a
 .hero h1{margin:20px 0 0}
 .hero h1 .g{background:linear-gradient(100deg,#0071E3,#66B2FF 50%,#0071E3);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero .lead{margin:18px auto 0;max-width:30ch}
-.hero-cta{margin-top:26px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.hero-cta{margin-top:26px;display:flex;flex-direction:column;align-items:center;gap:12px}
 .hero-cta small{font-size:13px;color:var(--muted)}
 .hero-phone{margin-top:36px}
 .hero-phone .phone{--pw:min(292px,31vh,74vw)}
@@ -130,7 +148,7 @@ nav{max-width:var(--max);margin:0 auto;padding:0 20px;height:50px;display:flex;a
 .mt{background:rgba(255,255,255,.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);
   border-radius:14px;padding:12px 17px;min-width:120px}
 .mt u{text-decoration:none;display:block;font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
-.mt b{display:block;font-size:21px;font-weight:600;letter-spacing:-.035em;margin-top:4px;font-variant-numeric:tabular-nums}
+.mt b{display:block;font-size:19px;font-weight:600;letter-spacing:-.035em;margin-top:4px}
 .mt b i{font-style:normal;font-size:12.5px;color:var(--muted);font-weight:400;letter-spacing:0}
 
 /* ── Recorrido de funciones ──────────────────────────────────────── */
@@ -148,14 +166,51 @@ nav{max-width:var(--max);margin:0 auto;padding:0 20px;height:50px;display:flex;a
   .feat .fig .phone{--pw:min(232px,34vh,62vw)}
 }
 
-/* ── Demostración ────────────────────────────────────────────────── */
-.demo{background:#06060A;color:#fff;padding:clamp(56px,9vw,104px) 0;position:relative;overflow:hidden}
-.demo::before{content:"";position:absolute;inset:0;background:
+/* ── Vídeos ──────────────────────────────────────────────────────── */
+.videos{background:#06060A;color:#fff;padding:clamp(56px,9vw,104px) 0;position:relative;overflow:hidden}
+.videos::before{content:"";position:absolute;inset:0;background:
   radial-gradient(760px 420px at 50% -12%,rgba(0,113,227,.4),transparent 64%)}
-.demo>*{position:relative}
-.demo p{color:rgba(255,255,255,.66)}
-.demo .phone{--pw:min(300px,42vh,76vw);margin-top:38px}
-.demo .slot{background:repeating-linear-gradient(45deg,#0E0E14,#0E0E14 12px,#12121A 12px,#12121A 24px)}
+.videos>*{position:relative}
+.videos p{color:rgba(255,255,255,.66)}
+.videos .slot{background:repeating-linear-gradient(45deg,#0E0E14,#0E0E14 12px,#12121A 12px,#12121A 24px)}
+.pieza{display:flex;flex-direction:column;align-items:center;gap:16px}
+/* Marco propio y no el de `.phone`: los vídeos son 9:16 y la pantalla del
+   teléfono es 9:19,5, así que metidos ahí con object-fit:cover perdían un 22%
+   por los lados — en el paseo por la app se comía media columna de texto. Con
+   su propia proporción se ve el encuadre entero, que es el que se montó. */
+.marco{position:relative;width:var(--pw,232px);aspect-ratio:9/16;flex:none;margin:0 auto;
+  border-radius:calc(var(--pw,232px)/9);padding:calc(var(--pw,232px)/34);
+  background:linear-gradient(155deg,#3A3A40,#0A0A0C 58%);
+  box-shadow:0 0 0 1px rgba(255,255,255,.09) inset,0 2px 6px rgba(0,0,0,.22),0 44px 84px -40px rgba(0,40,110,.5)}
+.marco::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(115deg,rgba(255,255,255,.15),transparent 32%,transparent 68%,rgba(255,255,255,.06))}
+.marco .screen{border-radius:calc(var(--pw,232px)/11.5)}
+.pieza .marco{--pw:min(232px,100%)}
+.destacado{margin-top:44px}
+.destacado .marco{--pw:min(300px,52vh,76vw)}
+.vcap{max-width:26ch;text-align:center}
+.vcap b{display:block;font-size:17px;font-weight:600;letter-spacing:-.025em}
+.vcap span{display:block;margin-top:5px;font-size:14px;line-height:1.45;color:rgba(255,255,255,.6)}
+.destacado .vcap{max-width:34ch}
+.destacado .vcap b{font-size:20px}
+.reel{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,34px);margin-top:clamp(48px,7vw,78px)}
+@media(max-width:820px){.reel{grid-template-columns:1fr;gap:44px}.reel .marco{--pw:min(232px,62vw)}}
+
+/* Los vídeos no arrancan solos: llevan voz y salir disparando audio a alguien
+   que acaba de entrar es la forma más rápida de que cierre la pestaña. Se ve
+   un fotograma real y un botón, y suena cuando lo pide. */
+.vplay{position:absolute;inset:0;z-index:5;display:grid;place-items:center;border:0;padding:0;cursor:pointer;
+  background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.42));transition:background .35s}
+.vplay:hover{background:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.28))}
+.vplay:focus-visible{outline:3px solid var(--blue2);outline-offset:-6px}
+.vplay i{width:60px;height:60px;border-radius:50%;display:grid;place-items:center;font-style:normal;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  box-shadow:0 10px 30px -8px rgba(0,0,0,.6);transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.vplay:hover i{transform:scale(1.09)}
+.vplay svg{width:23px;height:23px;fill:#06060A;margin-left:3px}
+.vdur{position:absolute;right:9px;bottom:9px;z-index:6;font-size:11px;font-weight:600;color:#fff;
+  background:rgba(0,0,0,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  padding:4px 9px;border-radius:999px;letter-spacing:.01em;pointer-events:none}
 
 /* ── Comparación ─────────────────────────────────────────────────── */
 .vs{display:grid;grid-template-columns:1fr auto 1fr;gap:22px;align-items:center;margin-top:44px}
@@ -174,55 +229,23 @@ nav{max-width:var(--max);margin:0 auto;padding:0 20px;height:50px;display:flex;a
 .one b{font-size:19px;position:relative}
 .one span{font-size:13.5px;color:rgba(255,255,255,.6);position:relative;text-align:center}
 
-/* ── Founders ────────────────────────────────────────────────────── */
-.club{background:#06060A;color:#fff;border-radius:32px;padding:clamp(40px,6vw,68px) clamp(24px,4.5vw,50px);position:relative;overflow:hidden}
-.club::before{content:"";position:absolute;inset:0;background:
-  radial-gradient(680px 320px at 84% -10%,rgba(0,113,227,.45),transparent 62%),
-  radial-gradient(500px 280px at 6% 110%,rgba(90,169,255,.2),transparent 62%)}
-.club>*{position:relative}
-.club p{color:rgba(255,255,255,.68)}
-.perks{list-style:none;margin-top:34px}
-.perks li{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-top:1px solid rgba(255,255,255,.11);font-size:16px;color:rgba(255,255,255,.9)}
-.perks li:last-child{border-bottom:1px solid rgba(255,255,255,.11)}
-.perks svg{width:18px;height:18px;flex:none;margin-top:3px;stroke:var(--blue2);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.perks b{color:#fff;font-weight:600}
-
-/* ── Precio ──────────────────────────────────────────────────────── */
-.price{background:#fff;border:1px solid var(--line);border-radius:26px;padding:clamp(32px,5vw,44px) clamp(22px,4vw,38px);
-  box-shadow:var(--shadow);max-width:430px;margin:40px auto 0;text-align:center;position:relative}
+/* ── Descarga ────────────────────────────────────────────────────── */
+.caja{background:#fff;border:1px solid var(--line);border-radius:26px;padding:clamp(32px,5vw,46px) clamp(22px,4vw,40px);
+  box-shadow:var(--shadow);max-width:560px;margin:40px auto 0;text-align:center;position:relative}
 .flag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;font-size:12px;font-weight:600;
   padding:7px 16px;border-radius:999px;white-space:nowrap;box-shadow:0 8px 20px -8px rgba(0,113,227,.8)}
-.was{font-size:17px;color:var(--muted);text-decoration:line-through}
-.now{font-size:clamp(52px,11vw,64px);font-weight:600;letter-spacing:-.05em;line-height:1;margin:8px 0 4px}
-.now sup{font-size:.42em;vertical-align:super;font-weight:500}
-.per{font-size:14.5px;color:var(--muted)}
-.save{display:inline-block;margin-top:16px;background:#E7F8EC;color:#1B7A38;font-size:13px;font-weight:600;padding:8px 15px;border-radius:999px}
-.form{display:flex;gap:9px;margin-top:26px;flex-wrap:wrap}
-/* En móvil el botón ya se envolvía a la línea de abajo, pero quedaba a medio
-   ancho y descolocado. Ocupando la fila entera es el destino obvio del pulgar. */
-@media(max-width:520px){
-  .form{flex-direction:column}
-  .form input,.form .btn{width:100%;min-width:0}
-}
-.form input{flex:1;min-width:190px;font:400 16px/1 inherit;padding:16px 17px;border:1px solid var(--line);border-radius:14px;background:#fff;transition:border-color .2s,box-shadow .2s}
-.form input:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,113,227,.14)}
-.form .btn{padding:16px 28px;font-size:16px}
-.solo-ios{display:flex;align-items:flex-start;gap:9px;margin-top:20px;
+.precio{font-size:clamp(30px,6vw,38px);font-weight:600;letter-spacing:-.04em;line-height:1.05;margin:6px 0 8px}
+.per{font-size:14.5px;color:var(--muted);max-width:36ch;margin:0 auto}
+.caja .stores{margin-top:28px}
+.solo-ios{display:flex;align-items:flex-start;gap:9px;margin-top:22px;
   font-size:13.5px;color:var(--ink2);background:#FFF8E6;border:1px solid #F5E3B0;
   border-radius:12px;padding:11px 14px;line-height:1.45;text-align:left}
 .solo-ios span{flex:1}
 .solo-ios b{color:var(--ink);font-weight:600}
 .solo-ios svg{width:17px;height:17px;flex:none;stroke:#B08400;fill:none;stroke-width:1.6;stroke-linecap:round}
-.msg{margin-top:12px;font-size:14px;min-height:20px}
-.msg.ok{color:#1B7A38}.msg.err{color:#C7362F}
-.fine{font-size:12.5px;color:var(--muted);margin-top:14px;line-height:1.5}
+.fine{font-size:12.5px;color:var(--muted);margin-top:16px;line-height:1.5}
 
-/* ── Social / FAQ / footer ───────────────────────────────────────── */
-.social{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:40px}
-@media(max-width:760px){.social{grid-template-columns:1fr}}
-.stat{text-align:center;padding:28px 16px;border:1px solid var(--line);border-radius:18px;background:var(--bg2)}
-.stat b{display:block;font-size:36px;font-weight:600;letter-spacing:-.04em}
-.stat u{text-decoration:none;font-size:13.5px;color:var(--muted);display:block;margin-top:5px}
+/* ── FAQ, legal y footer ─────────────────────────────────────────── */
 .faq{max-width:720px;margin:36px auto 0}
 details{border-bottom:1px solid var(--line)}
 summary{list-style:none;cursor:pointer;padding:21px 40px 21px 0;position:relative;font-size:17px;font-weight:500;letter-spacing:-.02em}
@@ -231,6 +254,26 @@ summary:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-ra
 summary::after{content:"";position:absolute;right:6px;top:50%;width:9px;height:9px;border:solid var(--muted);border-width:0 1.7px 1.7px 0;transform:translateY(-70%) rotate(45deg);transition:transform .3s}
 details[open] summary::after{transform:translateY(-20%) rotate(225deg)}
 details p{padding:0 0 21px;font-size:15.5px;line-height:1.6}
+
+.legal{background:var(--bg2)}
+.legal .faq{max-width:760px}
+.legal details{border-bottom-color:rgba(0,0,0,.09)}
+.legal summary{font-size:16px;padding-right:44px}
+/* El texto legal viene de /legal/ tal cual, con sus <p>, <ul> y <strong>. Se
+   estiliza aquí en bloque para no tener que tocar el original. */
+.legal-cuerpo{padding:0 0 22px;font-size:15px;line-height:1.65;color:var(--ink2)}
+.legal-cuerpo p{margin:.65em 0;font-size:inherit;line-height:inherit}
+.legal-cuerpo ul{margin:.65em 0;padding-left:1.15em}
+.legal-cuerpo li{margin:.4em 0}
+.legal-cuerpo strong{color:var(--ink);font-weight:600}
+.legal-cuerpo a{color:var(--blue)}
+.legal-cuerpo a:hover{text-decoration:underline}
+.legal-pie{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:34px}
+.legal-pie a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;
+  background:#fff;border:1px solid var(--line);font-size:14px;font-weight:500;transition:transform .25s}
+.legal-pie a:hover{transform:translateY(-2px)}
+.sello{font-size:12.5px;color:var(--muted);margin-top:18px;text-align:center}
+
 footer{border-top:1px solid var(--line);padding:38px 0;font-size:13px;color:var(--muted)}
 .f-in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
 .f-links{display:flex;gap:12px;flex-wrap:wrap}
@@ -247,7 +290,7 @@ footer a:hover{color:var(--ink)}
 <header id="hdr">
   <nav>
     <a class="brand" href="/"><img src="/logo.png" alt="" width="25" height="25">AllInOne</a>
-    <a class="nav-btn" id="navBtn" href="#reservar">Reservar plaza</a>
+    <a class="nav-btn" href="#descargar">Descargar</a>
   </nav>
 </header>
 
@@ -257,18 +300,18 @@ footer a:hover{color:var(--ink)}
 <section class="hero">
   <div class="aura"></div>
   <div class="wrap center">
-    <span class="pill rv"><span class="beat"></span> Founders Edition · quedan <b id="left1">100</b> plazas</span>
+    <span class="pill rv"><span class="beat"></span> Ya disponible en la App Store</span>
     <h1 class="rv">Tu vida entera.<br><span class="g">Una sola app.</span></h1>
     <p class="lead rv">Hábitos, IA, rutinas, sueño y entrenamientos. Sin saltar de app en app.</p>
     <div class="hero-cta rv">
-      <a class="btn btn-blue" id="heroCta" href="#reservar">Reservar mi plaza</a>
-      <small id="heroFine">Sin pago hoy · Precio bloqueado de por vida</small>
+      <div class="stores" id="storesHero"></div>
+      <small>Gratis para empezar · Sin tarjeta</small>
     </div>
     <div class="hero-phone rv"><div class="phone float"><div class="screen" data-media="hero"><div class="notch"></div></div></div></div>
     <div class="meter rv">
-      <div class="mt"><u>Cierra en</u><b id="cdown">–</b></div>
-      <div class="mt"><u>Plazas libres</u><b id="left2">–<i> / <span id="tot1">100</span></i></b></div>
-      <div class="mt"><u>Founders</u><b>$<span id="pf1">5.99</span><i id="pf1u">/mes</i></b></div>
+      <div class="mt"><u>Empezar</u><b>Gratis</b></div>
+      <div class="mt"><u>Dispositivos</u><b>iPhone<i> + Apple Watch</i></b></div>
+      <div class="mt"><u>Premium</u><b>$7.99<i>/mes</i></b></div>
     </div>
   </div>
 </section>
@@ -276,13 +319,14 @@ footer a:hover{color:var(--ink)}
 <!-- ══ RECORRIDO ══════════════════════════════════════════════════ -->
 <div class="wrap" id="feats"></div>
 
-<!-- ══ DEMOSTRACIÓN ═══════════════════════════════════════════════ -->
-<section class="demo">
+<!-- ══ VÍDEOS ═════════════════════════════════════════════════════ -->
+<section class="videos" id="videos">
   <div class="wrap center">
-    <span class="kicker rv" style="color:var(--blue2)">En movimiento</span>
-    <h2 class="rv" style="margin-top:12px">Míralo funcionando</h2>
-    <p class="lead rv" style="max-width:34ch;margin:16px auto 0">El mismo vídeo que viste en Instagram.</p>
-    <div class="rv"><div class="phone"><div class="screen" data-media="demo"><div class="notch"></div></div></div></div>
+    <span class="kicker rv" style="color:var(--blue2)">En vídeo</span>
+    <h2 class="rv" style="margin-top:12px">Qué es AllInOne</h2>
+    <p class="lead rv" style="max-width:36ch;margin:16px auto 0">Te lo cuento yo, en menos de medio minuto.</p>
+    <div class="pieza destacado rv" id="vDestacado"></div>
+    <div class="reel" id="vReel"></div>
   </div>
 </section>
 
@@ -308,62 +352,22 @@ footer a:hover{color:var(--ink)}
   </div>
 </section>
 
-<!-- ══ FOUNDERS ═══════════════════════════════════════════════════ -->
-<section style="padding-top:0">
+<!-- ══ DESCARGA ═══════════════════════════════════════════════════ -->
+<section id="descargar" style="padding-top:0">
   <div class="wrap">
-    <div class="club rv">
-      <span class="kicker" style="color:var(--blue2)">Founders Club</span>
-      <h2 style="margin:13px 0 14px;max-width:13ch">No es un descuento. Es entrar antes.</h2>
-      <p class="lead" style="max-width:40ch">Cien personas. Las que van a usar AllInOne antes que nadie.</p>
-      <ul class="perks" id="perks"></ul>
-    </div>
-  </div>
-</section>
-
-<!-- ══ PRECIO ═════════════════════════════════════════════════════ -->
-<section id="reservar" style="padding-top:0">
-  <div class="wrap">
-    <div class="center rv"><span class="kicker">Tu plaza</span><h2 style="margin-top:12px">Bloquéalo ahora</h2></div>
-    <div class="price rv">
-      <span class="flag">Founders · <span id="left3">–</span> plazas libres</span>
-      <div class="was">$<span id="pn1">7.99</span> USD/mes</div>
-      <div class="now"><sup>$</sup><span id="pf2">5.99</span></div>
-      <div class="per" id="perTxt">USD al mes · Premium completo</div>
-      <div class="save" id="saveTxt">Ahorras <span id="psave">25</span>% de por vida</div>
-      <!-- Va ANTES del formulario a propósito: quien tenga Android tiene que
-           enterarse antes de pagar, no en el correo de después. Un reembolso
-           cuesta más que una venta perdida. -->
-      <!-- El texto va envuelto en un <span>: en un contenedor flex, cada nodo
-           suelto y cada <b> serían items distintos y el aviso se partía en
-           columnas en pantallas estrechas. -->
+    <div class="center rv"><span class="kicker">Empezar</span><h2 style="margin-top:12px">Descárgala</h2></div>
+    <div class="caja rv">
+      <span class="flag">Versión 1.2</span>
+      <div class="precio">Gratis para empezar</div>
+      <p class="per">Hasta 8 hábitos, tu puntuación diaria y parte de la Guía IA, sin pagar nada ni dejar la tarjeta.</p>
+      <div class="stores" id="storesCaja"></div>
+      <!-- Va antes de la letra pequeña a propósito: quien tenga Android tiene
+           que enterarse antes de buscarla, no después de no encontrarla. -->
       <p class="solo-ios">
         <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18.5h2"/></svg>
-        <span>Por ahora solo para <b>iPhone</b>. La versión de Android llega después.</span>
+        <span>Por ahora solo para <b>iPhone</b>. La versión de Android está en pruebas y llega en cuanto Google la apruebe.</span>
       </p>
-      <form class="form" id="rsv" novalidate>
-        <input id="email" type="email" required autocomplete="email" inputmode="email" placeholder="tu@correo.com" aria-label="Tu correo">
-        <button class="btn btn-blue" type="submit" id="rsvBtn">Reservar</button>
-      </form>
-      <p class="msg" id="msg" role="status" aria-live="polite"></p>
-      <p class="fine" id="fineTxt"></p>
-      <!-- Los términos tienen que estar donde se paga, no sólo en el pie. El
-           apartado 4 bis es el que cubre esta compra concreta. -->
-      <p class="fine" style="margin-top:8px">
-        Al comprar aceptas los <a href="/legal/#terminos" style="color:var(--blue)">Términos</a>
-        y la <a href="/legal/#privacidad" style="color:var(--blue)">Política de privacidad</a>.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- Prueba social: oculta hasta que CONFIG.social.mostrar sea true. -->
-<section id="prueba" style="padding-top:0;display:none">
-  <div class="wrap">
-    <div class="center rv"><span class="kicker">La gente</span><h2 style="margin-top:12px">Ya somos unos cuantos</h2></div>
-    <div class="social rv">
-      <div class="stat"><b id="s1">0</b><u>plazas reservadas</u></div>
-      <div class="stat"><b id="s2">0</b><u>reproducciones en Instagram</u></div>
-      <div class="stat"><b id="s3">0</b><u>en la lista de espera</u></div>
+      <p class="fine">Premium desde $7.99 al mes con 7 días de prueba gratis, y se cancela desde los ajustes de tu Apple ID cuando quieras. Al descargarla aceptas los <a href="#terminos" style="color:var(--blue)">Términos</a> y la <a href="/legal/#privacidad" style="color:var(--blue)">Política de privacidad</a>.</p>
     </div>
   </div>
 </section>
@@ -373,17 +377,91 @@ footer a:hover{color:var(--ink)}
   <div class="wrap faq">
     <div class="center rv"><span class="kicker">Dudas</span><h2 style="margin-top:12px">Preguntas frecuentes</h2></div>
     <div class="rv">
-      <details><summary>¿Cuándo se lanza?</summary><p>La 1.0 ya está enviada a Apple, esperando revisión. Los Founders sois los primeros en saberlo.</p></details>
-      <details><summary>¿Cómo recibo mi acceso?</summary><p id="faqAcceso">Un correo con tu código único. Lo canjeas en la App Store y Premium queda activo al precio Founders.</p></details>
-      <details><summary>¿Tengo que pagar hoy?</summary><p id="faqPago">No. Reservar es gratis. Sólo pagas al canjear tu código, desde tu cuenta de Apple.</p></details>
-      <details><summary>¿Puedo cancelar cuando quiera?</summary><p id="faqCancelar">Sí, en dos toques desde los ajustes de tu Apple ID. Además hay 7 días de prueba gratis.</p></details>
-      <details><summary>¿Funciona en Android?</summary><p>Todavía no. AllInOne sale primero en iPhone y la versión de Android llega después. Si compras ahora y no tienes iPhone, escríbeme y te devuelvo el dinero sin preguntas.</p></details>
-      <details><summary>¿Y si Apple no aprueba la app?</summary><p>Te devuelvo el dinero entero, sin que tengas que pedirlo. La 1.0 ya está enviada y en revisión; si Apple la rechazara y no pudiera arreglarlo, no me quedo con el dinero de nadie.</p></details>
-      <details><summary>¿Qué pasa cuando acabe el mes?</summary><p>Nada automático: no hay suscripción, así que no se te cobra otra vez. Cuando quieras seguir, te suscribes desde la app y mantienes tu precio de Founder.</p></details>
+      <details><summary>¿Qué es AllInOne exactamente?</summary><p>Una sola app para lo que ahora tienes repartido en muchas: hábitos, rutinas, sueño, entrenamientos, nutrición por foto y una guía con IA que cruza todo eso. Los vídeos de arriba lo enseñan funcionando.</p></details>
+      <details><summary>¿Cuánto cuesta?</summary><p>Descargarla es gratis y con el plan gratuito puedes llevar hasta 8 hábitos, tu puntuación diaria y parte de la Guía IA. Premium cuesta desde $7.99 al mes y tiene 7 días de prueba.</p></details>
+      <details><summary>¿Funciona en Android?</summary><p>Todavía no. AllInOne salió primero en iPhone y la versión de Android está en pruebas cerradas, esperando la aprobación de Google. Cuando esté, aparece aquí el botón de Google Play.</p></details>
+      <details><summary>¿Necesito un reloj?</summary><p>No. La app funciona entera sin reloj. Si tienes Apple Watch o cualquier reloj que escriba en Salud, se suman el sueño, las pulsaciones y los entrenamientos, y las métricas salen más finas.</p></details>
+      <details><summary>¿Qué pasa con mis datos de salud?</summary><p>Se quedan en tu teléfono. Las puntuaciones se calculan ahí mismo y solo se sincronizan resultados agregados, nunca los datos brutos. No se venden ni se usan para publicidad — está escrito en los términos de aquí abajo y en la <a href="/legal/#privacidad" style="color:var(--blue)">política de privacidad</a>.</p></details>
+      <details><summary>¿Puedo borrar mi cuenta?</summary><p>Sí, desde la propia app o desde <a href="/eliminar-cuenta/" style="color:var(--blue)">esta página</a>. Se borra todo, sin trámites.</p></details>
+      <details><summary>Compré una plaza Founders. ¿Y ahora?</summary><p>La venta está cerrada, pero tu compra sigue en pie: el código que recibiste se canjea dentro de la app y activa Premium un mes. Si no te llegó o no funciona, escríbeme a <a href="mailto:allinone.support.app@gmail.com" style="color:var(--blue)">allinone.support.app@gmail.com</a> y lo arreglamos.</p></details>
       <details><summary>¿Quién está detrás de esto?</summary><p>Joaquín, 15 años. Llevo meses construyendo AllInOne yo solo y lo enseño en <a href="https://instagram.com/allin.oneapp" target="_blank" rel="noopener" style="color:var(--blue)">@allin.oneapp</a>. Si me escribes, te contesto yo.</p></details>
-      <details><summary>¿Qué incluye Premium?</summary><p>Guía IA completa, análisis de comidas por foto, la sección Vida entera, rutinas guiadas y misiones exclusivas.</p></details>
-      <details><summary>¿Y si se acaban las plazas?</summary><p>Cuando las <span id="tot2">100</span> estén ocupadas se cierra. Después se entra a $<span id="pn2">7.99</span>/mes.</p></details>
     </div>
+  </div>
+</section>
+
+<!-- ══ TÉRMINOS ═══════════════════════════════════════════════════
+     El texto NO se escribe aquí. Vive en legal/index.html —la URL que
+     tienen registrada Apple y Google— y lo copia a este hueco el script
+     scripts/sync-terminos.py. Después de tocar los términos:
+         python3 scripts/sync-terminos.py
+     ═════════════════════════════════════════════════════════════════ -->
+<section class="legal" id="terminos">
+  <div class="wrap faq">
+    <div class="center rv"><span class="kicker">Legal</span><h2 style="margin-top:12px">Términos y condiciones</h2>
+      <p class="lead" style="max-width:44ch;margin:16px auto 0">Las condiciones completas de uso de AllInOne. Toca cualquier apartado para leerlo.</p>
+    </div>
+    <div class="rv">
+<!-- TERMINOS:INICIO — generado por scripts/sync-terminos.py, no editar a mano -->
+<details><summary>1. Aceptación de los términos</summary><div class="legal-cuerpo"><p>Bienvenido/a a <strong>AllInOne</strong>. Al acceder o utilizar esta aplicación, ya sea en modalidad gratuita o Premium, usted declara haber leído, comprendido y aceptado quedar vinculado por estos Términos y Condiciones (&quot;Términos&quot;), así como por nuestra Política de Privacidad, ambos documentos incorporados íntegramente a este acuerdo.</p>
+<p>Si no está de acuerdo con alguno de estos Términos, le rogamos que se abstenga de utilizar la Aplicación. El uso continuado de AllInOne constituye aceptación plena y sin reservas de las condiciones aquí establecidas.</p></div></details>
+<details><summary>2. Descripción del servicio</summary><div class="legal-cuerpo"><p>AllInOne es una aplicación móvil de productividad personal y bienestar que integra: seguimiento de hábitos con gamificación (XP, niveles, rachas), Guía IA diaria personalizada, Life Analytics (puntuación diaria, batería corporal, estrés, preparación, correlaciones), reflexión diaria con análisis de inteligencia artificial, registro nutricional por fotografía, misiones y side quests, integración con relojes inteligentes, rutinas deportivas guiadas, playlists musicales personalizadas y funciones sociales.</p>
+<p>El servicio se ofrece en dos modalidades:</p>
+<ul><li><strong>Plan Gratuito:</strong> hasta 8 hábitos activos, seguimiento de progreso básico (7 días), acceso limitado a la Guía IA (3 de 5 consejos diarios), puntuación diaria y métricas básicas de salud (con reloj conectado), sin reflexión diaria IA, sin análisis fotográfico de alimentos, sin misiones exclusivas, sin rutinas deportivas ni playlists.</li><li><strong>Plan Premium (desde $7.99/mes):</strong> hábitos ilimitados, Guía IA completa (5 consejos) potenciada con tus datos de salud, Life Analytics completo (puntuación diaria, batería corporal, niveles de estrés, preparación, desglose de tiempo y correlaciones), Coach IA con insights personalizados basados en tus datos biométricos, reflexión diaria con análisis personalizado de IA, análisis fotográfico de alimentos con cálculo de macros, misiones y aventuras exclusivas, gráficas avanzadas y dashboard semanal, rutinas deportivas personalizadas paso a paso, playlists musicales curadas para cada hábito, streak freezes ilimitados y acceso prioritario a nuevas funciones.</li></ul>
+<p>AllInOne se reserva el derecho de modificar, añadir o retirar funcionalidades de cualquier plan, notificando con al menos 30 días de antelación para cambios que afecten a suscriptores activos.</p></div></details>
+<details><summary>3. Cuentas de usuario y registro</summary><div class="legal-cuerpo"><p>Para acceder a AllInOne, el Usuario puede iniciar sesión mediante Google Sign-In, Apple Sign-In (solo en iOS) o con un correo electrónico y una contraseña. Al registrarse, el Usuario garantiza que:</p>
+<ul><li>Tiene al menos 13 años, o la edad mínima de consentimiento digital de su país si fuera superior (16 años en varios Estados de la Unión Europea). Los menores de edad sólo pueden usar la Aplicación con el consentimiento y bajo la supervisión de su padre, madre o tutor legal, quien asume la responsabilidad de dicho uso y es el único que puede contratar una suscripción de pago en su nombre.</li><li>La información proporcionada es veraz, completa y actualizada.</li><li>Protegerá sus credenciales de acceso y notificará de inmediato cualquier uso no autorizado.</li><li>Es el único responsable de toda la actividad realizada bajo su cuenta.</li></ul>
+<p>Nos reservamos el derecho de suspender o eliminar cuentas que incumplan estos Términos, sin previo aviso y sin derecho a compensación.</p></div></details>
+<details><summary>4. Suscripción Premium y facturación</summary><div class="legal-cuerpo"><p>Las compras y suscripciones en AllInOne las gestiona la tienda desde la que hayas instalado la Aplicación: <strong>Apple App Store (StoreKit / In-App Purchase)</strong> en iOS/iPadOS y <strong>Google Play Billing</strong> en Android. Los pagos los procesa directamente Apple Inc. o Google LLC, según el caso. Al suscribirte, aceptas tanto estos Términos como las <strong>Condiciones de Servicio de Apple</strong> (apple.com/legal/internet-services/itunes).</p>
+<ul><li><strong>Precio:</strong> el precio vigente de cada plan (semanal, mensual, trimestral, anual y Básico) se muestra siempre en la Aplicación y en la ficha del App Store o de Google Play antes de confirmar la compra, en tu divisa local y con los impuestos aplicables a tu país o región. Ese precio mostrado en el momento de la compra es el que prevalece.</li><li><strong>Renovación automática:</strong> la suscripción se renueva automáticamente cada mes al precio vigente salvo que la canceles con al menos <strong>24 horas de antelación</strong> al vencimiento del periodo en curso.</li><li><strong>Momento del cargo:</strong> el cobro se efectúa al confirmar la suscripción o, en caso de prueba gratuita, al concluir los 7 días de prueba. La confirmación del cargo llega en el recibo que envía Apple a tu Apple ID o Google a tu cuenta de Google, según la tienda.</li><li><strong>Gestión de suscripción:</strong> puedes ver, cambiar o cancelar tu suscripción en cualquier momento desde <strong>Configuración &gt; [tu nombre] &gt; Suscripciones</strong> en iOS, desde <strong>Play Store &gt; tu perfil &gt; Pagos y suscripciones &gt; Suscripciones</strong> en Android, o desde la sección Perfil de la app.</li><li><strong>Cambios de precio:</strong> cualquier modificación de precio se comunicará con un mínimo de <strong>30 días de antelación</strong> y no afectará al periodo de facturación activo en ese momento.</li><li><strong>Divisa:</strong> los precios se muestran en USD. Apple puede convertirlos a la moneda local de tu App Store según la tasa de cambio vigente.</li></ul>
+<p>AllInOne no tiene acceso a los datos de tu tarjeta, cuenta bancaria ni información de pago. Toda la información financiera es gestionada exclusivamente por Apple.</p></div></details>
+<details><summary>4 bis. Plazas Founders adquiridas en esta web (cerrado)</summary><div class="legal-cuerpo"><p><strong>La venta de plazas Founders está cerrada.</strong> Este sitio web ya no vende acceso Premium ni ningún otro producto: AllInOne se descarga en la App Store y en Google Play, y toda compra se rige por el apartado 4. Este apartado se mantiene publicado porque sigue vinculando a quienes compraron una plaza mientras estuvo abierta.</p>
+<p>Para esas compras, ya realizadas, siguen vigentes las siguientes condiciones, que prevalecen sobre el apartado 4:</p>
+<ul>
+<li><strong>Qué se compró:</strong> un <strong>pago único</strong> que da derecho a <strong>un (1) mes de acceso Premium</strong>. No es una suscripción: no hay renovación automática y no se realiza ningún cargo posterior.</li>
+<li><strong>Procesador de pago:</strong> el cobro lo procesó <strong>Stripe</strong>. AllInOne no almacena ni tiene acceso a los datos de tu tarjeta.</li>
+<li><strong>Entrega:</strong> tras el pago se envía por correo electrónico, a la dirección con la que se compró, un <strong>código promocional de un solo uso</strong>. El código se canjea dentro de la aplicación AllInOne y activa el acceso Premium durante un mes desde el momento del canje. Si compraste una plaza y no has recibido tu código, escribe a <a href="mailto:allinone.support.app@gmail.com">allinone.support.app@gmail.com</a> y te lo enviamos.</li>
+<li><strong>Reembolsos:</strong> para estas compras <strong>no aplica el procedimiento de Apple ni el de Google Play</strong> descrito en el apartado 6. Las devoluciones se solicitan escribiendo a <a href="mailto:allinone.support.app@gmail.com">allinone.support.app@gmail.com</a> y se tramitan a través de Stripe. Se devuelve el importe íntegro, sin necesidad de justificación, en cualquiera de estos casos: no disponer de un dispositivo compatible, o que el código no llegue o no funcione.</li>
+<li><strong>Caducidad del código:</strong> el código debe canjearse dentro de los <strong>seis (6) meses</strong> siguientes a su emisión.</li>
+<li><strong>Precio futuro:</strong> la condición de Founder conserva el precio de adquisición para renovaciones posteriores, aunque el precio general aumente. Este compromiso lo asume AllInOne y es independiente de los precios que muestren la App Store o Google Play en cada momento.</li>
+</ul></div></details>
+<details><summary>5. Periodo de prueba gratuita</summary><div class="legal-cuerpo"><p>7 días completamente gratis. No se realiza ningún cargo durante el periodo de prueba. Puedes cancelar antes de que termine sin coste alguno.</p>
+<ul><li>Disponible exclusivamente para nuevos suscriptores que no hayan disfrutado antes de una prueba en la misma cuenta de Apple ID o de Google, según la tienda.</li><li>Si no cancelas antes del vencimiento, se inicia automáticamente la suscripción de pago.</li><li>Al cancelar durante la prueba, el acceso Premium expira al término de los 7 días.</li></ul>
+<p>AllInOne se reserva el derecho de modificar la duración o disponibilidad de los periodos de prueba en cualquier momento.</p></div></details>
+<details><summary>6. Cancelación y política de reembolsos</summary><div class="legal-cuerpo"><p>El Usuario puede cancelar su suscripción en cualquier momento desde los ajustes de su Apple ID (Configuración &gt; [Tu nombre] &gt; Suscripciones) en iOS, desde Play Store &gt; su perfil &gt; Pagos y suscripciones &gt; Suscripciones en Android, o desde la sección Perfil dentro de la Aplicación.</p>
+<ul><li>Al cancelar, el acceso Premium permanece activo hasta el fin del periodo ya abonado.</li><li>No se emiten reembolsos por periodos parciales no utilizados, salvo los exigidos por la política de Apple o de Google Play.</li><li>Para solicitar un reembolso, el Usuario debe acudir directamente a la tienda donde compró: <strong>reportaproblem.apple.com</strong> en el caso de Apple, o <strong>play.google.com/store/account/subscriptions</strong> (o support.google.com/googleplay) en el caso de Google Play.</li><li>AllInOne no tiene acceso directo a datos de pago ni puede procesar reembolsos de forma independiente.</li><li><strong>Este apartado no se aplica a las plazas Founders que se adquirieron en esta web</strong> mientras la venta estuvo abierta: se pagaron mediante Stripe y sus devoluciones se solicitan directamente a AllInOne. Ver el apartado <strong>4 bis</strong>.</li></ul></div></details>
+<details><summary>7. Código de conducta del usuario</summary><div class="legal-cuerpo"><p>El Usuario se compromete a utilizar AllInOne de forma lícita y respetuosa. Queda estrictamente prohibido:</p>
+<ul><li>Utilizar la Aplicación para fines ilegales, fraudulentos o que vulneren derechos de terceros.</li><li>Intentar acceder sin autorización a sistemas, redes o datos de otros usuarios.</li><li>Distribuir virus, malware u otro código malicioso a través de la Aplicación.</li><li>Realizar ingeniería inversa, descompilar o desensamblar cualquier parte de la Aplicación.</li><li>Compartir, vender o transferir el acceso Premium de su cuenta a terceros.</li><li>Publicar o transmitir contenido ofensivo, difamatorio, obsceno o que incite al odio.</li><li>Interferir con el funcionamiento de la Aplicación o sus infraestructuras.</li></ul>
+<p>El incumplimiento de estas normas podrá resultar en la suspensión o eliminación inmediata de la cuenta sin derecho a reembolso.</p>
+<p><strong>Contenido y conducta entre usuarios:</strong> AllInOne aplica una política de <strong>tolerancia cero</strong> frente al contenido objetable y al comportamiento abusivo. El nombre de pantalla, la fotografía de perfil y el resto de datos visibles para otros usuarios son contenido generado por el Usuario y quedan sujetos a estas normas.</p>
+<ul><li><strong>Reportar:</strong> desde el perfil de cualquier usuario puedes reportarlo indicando el motivo (acoso, contenido inapropiado, spam, suplantación u otro).</li><li><strong>Bloquear:</strong> puedes bloquear a cualquier usuario en cualquier momento. El bloqueo rompe la relación de amistad e impide que vuelva a añadirte, y se gestiona desde Ajustes → Usuarios bloqueados.</li><li><strong>Nuestro compromiso:</strong> revisamos todos los reportes en un plazo máximo de <strong>24 horas</strong> y eliminamos el contenido infractor y, cuando proceda, la cuenta responsable, sin previo aviso ni derecho a reembolso.</li><li><strong>Contacto:</strong> para denunciar contenido o conducta que no puedas reportar desde la Aplicación, escribe a <strong>allinone.support.app@gmail.com</strong>.</li></ul></div></details>
+<details><summary>8. Propiedad intelectual</summary><div class="legal-cuerpo"><p>Todos los derechos de propiedad intelectual sobre AllInOne — incluyendo software, diseño, interfaz, logotipos, textos, gráficos, iconos, sonidos y contenido generado por IA — pertenecen exclusivamente a AllInOne y sus licenciantes.</p>
+<p>El Usuario recibe una licencia limitada, no exclusiva, intransferible y revocable para usar la Aplicación exclusivamente para fines personales y no comerciales.</p>
+<p>Queda prohibida la reproducción, distribución, modificación o cualquier otra explotación de los contenidos sin autorización expresa y escrita de AllInOne.</p></div></details>
+<details><summary>9. Contenido generado por inteligencia artificial</summary><div class="legal-cuerpo"><p>Todo el contenido generado por IA y las métricas calculadas dentro de AllInOne (Guía IA, Life Analytics, Coach IA, análisis de reflexiones, rutinas deportivas, análisis nutricional por foto) tiene carácter <strong>exclusivamente orientativo e informativo</strong>. No constituye, ni debe interpretarse como, asesoramiento médico, nutricional, psicológico, terapéutico ni de ningún otro tipo profesional.</p>
+<ul><li><strong>Guía IA y reflexiones:</strong> los análisis y sugerencias se generan a partir de los datos que el usuario introduce voluntariamente y sus métricas de salud. AllInOne no es responsable de decisiones tomadas basándose en estas recomendaciones.</li><li><strong>Life Analytics y Coach IA:</strong> la batería corporal, puntuación de estrés, puntuación de preparación, puntuación diaria y correlaciones se calculan a partir de datos de tu wearable usando modelos algorítmicos. Son estimaciones e indicadores, no diagnósticos médicos. El Coach IA ofrece sugerencias personalizadas basadas en estas métricas pero no sustituye orientación profesional de salud.</li><li><strong>Análisis fotográfico de alimentos:</strong> los valores calóricos y de macronutrientes son estimaciones y pueden contener inexactitudes de hasta ±30%. No deben usarse como sustitutos de recuentos calóricos médicamente supervisados.</li><li><strong>Rutinas deportivas:</strong> las rutinas ofrecidas son orientativas. Consulta siempre a un profesional de la salud o entrenador certificado antes de iniciar cualquier programa de ejercicio, especialmente si padeces alguna condición física.</li><li><strong>Privacidad de las reflexiones:</strong> el texto introducido en la función de reflexión diaria se envía a un servicio de IA de terceros (ver Política de Privacidad) para su análisis. No compartas datos médicos sensibles ni información identificativa de terceros en tus reflexiones.</li></ul>
+<p>Ante cualquier duda relacionada con tu salud física o mental, consulta siempre a un profesional cualificado. AllInOne no asume ninguna responsabilidad por daños derivados de seguir las recomendaciones de IA o métricas de salud calculadas.</p></div></details>
+<details><summary>10. Limitación de responsabilidad</summary><div class="legal-cuerpo"><p>En la máxima medida permitida por la ley, AllInOne y sus desarrolladores, empleados, socios y licenciantes no serán responsables de:</p>
+<ul><li>Pérdida de datos, interrupción del servicio o fallos técnicos imputables a terceros o fuerza mayor.</li><li>Daños directos, indirectos, incidentales, especiales o consecuentes derivados del uso o la imposibilidad de uso de la Aplicación.</li><li>Decisiones tomadas por el Usuario a partir del contenido generado por IA.</li><li>Pérdidas económicas derivadas de suscripciones, compras o cancelaciones.</li></ul>
+<p>La responsabilidad total de AllInOne no excederá el importe abonado por el Usuario en los doce (12) meses previos al evento que originó la reclamación.</p></div></details>
+<details><summary>11. Disponibilidad del servicio</summary><div class="legal-cuerpo"><p>Nos esforzamos por mantener AllInOne disponible de forma continua, pero no garantizamos un servicio ininterrumpido. La aplicación puede estar temporalmente no disponible por mantenimiento programado, fallos técnicos o decisiones de las tiendas de aplicaciones.</p>
+<p>En caso de interrupción prolongada imputable a AllInOne, el Usuario podrá solicitar compensación proporcional contactando a <strong>allinone.support.app@gmail.com</strong>.</p></div></details>
+<details><summary>12. Modificaciones de los términos</summary><div class="legal-cuerpo"><p>Nos reservamos el derecho de modificar estos Términos en cualquier momento. Ante cambios materiales, notificaremos al Usuario mediante aviso dentro de la Aplicación en el primer acceso tras la modificación.</p>
+<p>El uso continuado de AllInOne tras la publicación de los nuevos Términos constituye aceptación de los mismos.</p></div></details>
+<details><summary>13. Ley aplicable y resolución de disputas</summary><div class="legal-cuerpo"><p>Estos Términos se rigen por las leyes de los Estados Unidos Mexicanos, sin perjuicio de los derechos que la legislación de protección al consumidor de tu país de residencia te reconozca de forma irrenunciable. Antes de iniciar cualquier procedimiento formal, las partes se comprometen a intentar resolver la disputa mediante <strong>negociación amistosa por escrito</strong> en un plazo de 30 días naturales desde la notificación.</p>
+<ul><li><strong>Arbitraje vinculante:</strong> si no se alcanza un acuerdo amistoso, cualquier disputa, reclamación o controversia derivada de estos Términos o del uso de la Aplicación se resolverá mediante <strong>arbitraje vinculante individual</strong>. El arbitraje será confidencial y se llevará a cabo conforme a las reglas de la institución arbitral aplicable en la jurisdicción del desarrollador.</li><li><strong>Renuncia a acciones colectivas:</strong> en la máxima medida permitida por la ley aplicable, <strong>el Usuario renuncia expresamente a participar en demandas colectivas (class actions), demandas representativas o cualquier procedimiento en el que actúe en nombre de otras personas</strong>. Todas las reclamaciones deberán interponerse a título individual.</li><li><strong>Excepción de pequeñas causas:</strong> cualquier parte podrá presentar reclamaciones individuales ante los tribunales de pequeñas causas competentes, siempre que la reclamación no supere el umbral establecido por dichos tribunales.</li><li><strong>Usuarios de México:</strong> conservas en todo caso el derecho a acudir a la <strong>Procuraduría Federal del Consumidor (PROFECO)</strong> y a los tribunales competentes de tu domicilio. Las disposiciones de arbitraje y la renuncia a acciones colectivas anteriores no limitan esos derechos, que son irrenunciables conforme a la Ley Federal de Protección al Consumidor.</li><li><strong>Usuarios de la Unión Europea:</strong> sin perjuicio de lo anterior, los usuarios residentes en la UE conservan el derecho a presentar reclamaciones ante las autoridades de protección de datos competentes y a acudir a la plataforma ODR de la Comisión Europea (ec.europa.eu/consumers/odr). Las disposiciones de arbitraje anteriores no afectan a los derechos irrenunciables reconocidos por la legislación de la UE.</li><li><strong>Usuarios de California (EE.UU.):</strong> los residentes en California pueden tener derechos adicionales en virtud del Código Civil de California y la CCPA (California Consumer Privacy Act). Ver Política de Privacidad, sección &#x27;Derechos adicionales — California&#x27;.</li><li><strong>Plazo de prescripción:</strong> cualquier reclamación debe presentarse dentro del plazo de <strong>un (1) año</strong> desde que el Usuario tuvo o debería haber tenido conocimiento del hecho que la origina. Pasado dicho plazo, la reclamación quedará prescrita.</li></ul></div></details>
+<details><summary>14. Indemnización</summary><div class="legal-cuerpo"><p>El Usuario acepta <strong>indemnizar, defender y mantener indemne</strong> a AllInOne y a sus desarrolladores, empleados, socios, directivos y agentes frente a cualquier reclamación, demanda, pérdida, daño, responsabilidad, coste o gasto (incluidos honorarios legales razonables) que surja de:</p>
+<ul><li>El uso de la Aplicación por parte del Usuario en violación de estos Términos.</li><li>El contenido introducido por el Usuario en la Aplicación (reflexiones, imágenes, datos).</li><li>La infracción de derechos de propiedad intelectual de terceros.</li><li>Cualquier declaración falsa o incorrecta realizada al registrarse o usar la Aplicación.</li></ul>
+<p>AllInOne se reserva el derecho de asumir la defensa exclusiva y el control de cualquier asunto sujeto a indemnización, en cuyo caso el Usuario cooperará con AllInOne en la defensa de dicho asunto.</p></div></details>
+<details><summary>15. Disposiciones finales</summary><div class="legal-cuerpo"><ul><li><strong>Divisibilidad:</strong> si alguna disposición de estos Términos fuera declarada nula, ilegal o inaplicable por un tribunal competente, dicha disposición se limitará o eliminará en la medida mínima necesaria, y el resto de los Términos permanecerá en plena vigencia y efecto.</li><li><strong>Acuerdo completo:</strong> estos Términos, junto con la Política de Privacidad y cualquier aviso legal adicional publicado en la Aplicación, constituyen el acuerdo completo entre el Usuario y AllInOne con respecto al objeto del mismo, sustituyendo cualquier comunicación, representación o acuerdo previo, oral o escrito.</li><li><strong>No renuncia:</strong> el hecho de que AllInOne no ejerza o haga cumplir cualquier derecho o disposición de estos Términos no constituirá una renuncia a dicho derecho o disposición.</li><li><strong>Cesión:</strong> el Usuario no podrá ceder sus derechos u obligaciones bajo estos Términos sin el consentimiento previo y por escrito de AllInOne. AllInOne podrá ceder estos Términos en su totalidad en el contexto de una fusión, adquisición o venta de activos, notificando al Usuario con al menos 30 días de antelación.</li><li><strong>Comunicaciones:</strong> las notificaciones formales a AllInOne deberán enviarse a <strong>allinone.legal.app@gmail.com</strong>. AllInOne podrá comunicarse con el Usuario a través de avisos en la Aplicación o al correo asociado a su cuenta.</li></ul></div></details>
+<!-- TERMINOS:FIN -->
+    </div>
+    <div class="legal-pie rv">
+      <a href="/legal/#terminos">Ver en página aparte</a>
+      <a href="/legal/#privacidad">Política de privacidad</a>
+      <a href="/eliminar-cuenta/">Eliminar mi cuenta</a>
+      <a href="mailto:allinone.legal.app@gmail.com">Avisos legales</a>
+    </div>
+    <p class="sello rv">AllInOne · 2 de septiembre de 2026 · v4.3</p>
   </div>
 </section>
 
@@ -395,6 +473,7 @@ footer a:hover{color:var(--ink)}
     <div class="f-links">
       <a href="/legal/#privacidad">Privacidad</a>
       <a href="/legal/#terminos">Términos</a>
+      <a href="/eliminar-cuenta/">Eliminar cuenta</a>
       <a href="mailto:allinone.support.app@gmail.com">Soporte</a>
     </div>
   </div>
@@ -416,7 +495,6 @@ footer a:hover{color:var(--ink)}
    ══════════════════════════════════════════════════════════════════ */
 var MEDIA = {
   hero:     { tipo:"video", src:"/media/hero.mp4", poster:"/media/hero-poster.jpg", nombre:"Vídeo del hero" },
-  demo:     { tipo:"video", src:"/media/demo.mp4", poster:"/media/demo-poster.jpg", nombre:"Vídeo principal" },
   habitos:  { tipo:"img",   src:"/media/habitos.jpg",  nombre:"Hábitos" },
   rutinas:  { tipo:"img",   src:"/media/rutinas.jpg",  nombre:"Rutinas" },
   vida:     { tipo:"img",   src:"/media/vida.jpg",     nombre:"Vida" },
@@ -444,90 +522,43 @@ var FEATURES = [
   { k:"nutricion", t:"Nutrición",          h:"Sin contar a mano.",         p:"Fotografía el plato y la IA estima calorías y macros." }
 ];
 
-/* ══ 3) CONFIGURACIÓN ═════════════════════════════════════════════ */
+/* ══ 3) LOS VÍDEOS QUE EXPLICAN LA APP ════════════════════════════
+   El primero sale grande; el resto, en fila debajo. Añadir uno es
+   añadir una línea: se pinta solo.
+   Comprimidos para web con:
+     ffmpeg -i original.mp4 -vf scale=720:1280 -c:v libx264 -crf 26 \
+            -movflags +faststart -c:a aac -b:a 96k salida.mp4        */
+var VIDEOS_EXPLICATIVOS = [
+  { src:"/media/v-promo.mp4",     poster:"/media/p-promo.jpg",     dur:"0:27",
+    t:"Por qué la hice",  d:"El problema que tenía y lo que acabé construyendo para arreglarlo." },
+  { src:"/media/v-funciones.mp4", poster:"/media/p-funciones.jpg", dur:"0:22",
+    t:"Un paseo por dentro", d:"Las pantallas de verdad, una detrás de otra, sin montaje." },
+  { src:"/media/v-habitos.mp4",   poster:"/media/p-habitos.jpg",   dur:"0:25",
+    t:"Hábitos y comida", d:"Marcar el día en un toque y registrar un plato con una foto." },
+  { src:"/media/v-tiempo.mp4",    poster:"/media/p-tiempo.jpg",    dur:"0:49",
+    t:"Cincuenta minutos", d:"Lo que aparece cuando la app te enseña a dónde se te va el día." }
+];
+
+/* ══ 4) CONFIGURACIÓN ═════════════════════════════════════════════ */
 var CONFIG = {
-  plazasTotales:  100,
-  plazasVendidas: 0,
-  cierre:         "2026-09-15T23:59:59-06:00",
-  precioNormal:   7.99,
-  precioFounders: 5.99,
-
-  beneficios: [
-    // "De por vida" sin explicar cómo se cumple es una promesa vacía cuando lo
-    // que se vende es un mes suelto. Aquí se dice qué pasa exactamente cuando
-    // ese mes se acaba, que es la duda real de quien está a punto de pagar.
-    ["Tu precio no sube nunca.","Cuando renueves sigues pagando lo de hoy, aunque haya subido para todos."],
-    ["Acceso el día uno.","Entras el día del lanzamiento, sin esperar turno."],
-    ["Insignia Founder.","Permanente en tu perfil. Sólo cien personas la tendrán."],
-    ["Prioridad en nuevas funciones.","Lo que pidan los Founders se construye primero."],
-    ["Voz en el producto.","Canal directo conmigo para decidir qué entra y qué no."]
-  ],
-
-  social: { mostrar:false, reservadas:0, reproducciones:0, listaEspera:0 },
-
-  /* ── COBRO (Lemon Squeezy) ────────────────────────────────────────
-     Mientras `enlace` esté vacío, el botón sólo reserva la plaza y no
-     cobra nada. En cuanto se pegue aquí el enlace del checkout, el mismo
-     botón pasa a cobrar: guarda el correo y lleva al pago con la
-     dirección ya rellenada y una referencia para cruzarlo después.
-
-     El enlace sale de Lemon Squeezy → Products → tu producto → Share.
-     Tiene esta pinta:  https://TUTIENDA.lemonsqueezy.com/buy/UUID
-     En el producto hay que poner, en "Redirect to URL after purchase":
-        https://allinonehabits.online/gracias/
-     ──────────────────────────────────────────────────────────────── */
-  pago: {
-    proveedor: "stripe",           // o "lemonsqueezy"
-    enlace: "https://buy.stripe.com/fZueVe5x0e8Y0tsfcXg3601",
-    textoBotonPago: "Pagar $5.99 y entrar"
-
-    /* ── STRIPE (decidido el 7 ago 2026) ───────────────────────────
-       Se cobra con Stripe y no con Lemon Squeezy porque Lemon lleva
-       cinco días sin aprobar la tienda y el vídeo sale ya.
-
-       QUÉ SE VENDE: un pago ÚNICO de 5,99 USD = un mes de Premium
-       completo. NO es una suscripción: el código que se entrega dura
-       un mes (`duration_months: 1` en la tabla `promo_codes`).
-       Si algún día se vende el año, hay que ampliar antes el CHECK de
-       esa columna, que hoy sólo acepta 1, 3 y 12.
-
-       PARA ENCENDERLO:
-       1. Stripe → Payment Links → nuevo producto de pago único, 5,99 USD.
-       2. En "After payment" → "Redirect to a page":
-             https://allinonehabits.online/gracias/
-       3. Copiar el enlace (https://buy.stripe.com/…) y pegarlo en
-          `enlace`. El botón, el hero y el FAQ cambian solos.
-
-       El correo viaja como `prefilled_email` y la referencia como
-       `client_reference_id`, para cruzar el pago con `founders_waitlist`. */
-
-    /* El producto ya existe y está publicado en Lemon Squeezy:
-       AllInOne Premium — Founders Edition · 5,99 USD cada mes.
-
-       Enlace del checkout EN MODO PRUEBA:
-       https://allinonehabits.lemonsqueezy.com/checkout/buy/72acc680-4296-4457-9fcd-0ccf1817bdd8
-
-       Está fuera de `enlace` a propósito. En modo prueba se cobra con
-       tarjetas falsas: si se publica aquí, cualquiera puede "comprar" una
-       plaza Founders sin pagar nada, y el contador de plazas se ensucia.
-
-       Para encender el cobro de verdad:
-       1. Activar la tienda en Lemon Squeezy (identidad + cuenta bancaria).
-       2. Apagar el modo prueba y copiar el enlace de la tienda ya activa.
-       3. Pegarlo arriba en `enlace`. El botón cambia solo. */
+  tiendas: {
+    appstore: "https://apps.apple.com/app/id6781454764",
+    /* Google Play: en cuanto la ficha sea pública, pegar aquí
+       https://play.google.com/store/apps/details?id=com.joaquin.allinone
+       y los dos botones de la página se encienden solos. Mientras esté
+       vacío salen apagados y diciendo "Pronto", que es la verdad: hoy esa
+       URL devuelve 404 y un botón que lleva a un 404 es peor que ninguno. */
+    play: ""
   },
 
   supabaseUrl:"https://glqlyizfvuainaewqlad.supabase.co",
-  supabaseKey:"sb_publishable_TrfOjokY3fkoMbuFMmWbpA_dj3WXuxx",
-  tabla:"founders_waitlist"
+  supabaseKey:"sb_publishable_TrfOjokY3fkoMbuFMmWbpA_dj3WXuxx"
 };
 /* ════════════════════════════════════════════════════════════════ */
 
 var $=function(i){return document.getElementById(i)},
-    set=function(i,v){var e=$(i); if(e) e.textContent=v},
     esc=function(s){return String(s).replace(/[&<>"]/g,function(c){
-      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})},
-    libres=Math.max(0,CONFIG.plazasTotales-CONFIG.plazasVendidas);
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
 
 /* ── Pinta una pantalla: material real si lo hay, hueco si no ───── */
 var ICON_IMG='<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="M21 16l-5-5-6 6-2-2-5 5"/></svg>',
@@ -591,59 +622,88 @@ $("feats").innerHTML=FEATURES.map(function(f){
 
 [].forEach.call(document.querySelectorAll("[data-media]"),paint);
 
-/* ── Beneficios Founders ────────────────────────────────────────── */
-$("perks").innerHTML=CONFIG.beneficios.map(function(b){
-  return '<li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>'+
-         '<span><b>'+esc(b[0])+'</b> '+esc(b[1])+'</span></li>';
-}).join("");
+/* ── Los vídeos que explican la app ─────────────────────────────────
+   No arrancan solos. Llevan voz, y soltar audio de golpe a alguien que
+   acaba de entrar desde Instagram es la forma más rápida de que cierre
+   la pestaña. Se ve un fotograma real con un botón, y sólo cuando lo
+   pulsa se descarga el vídeo y suena. De paso, quien no toque ninguno
+   no se baja los 16 MB de los cuatro. */
+var PLAY_SVG='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6L19 12z"/></svg>';
 
-/* ── Cifras ─────────────────────────────────────────────────────── */
-["left1","left2","left3"].forEach(function(i){set(i,libres)});
-
-/* ── Plazas vendidas, preguntadas a la base de datos ────────────────
-   `plazasVendidas` del CONFIG es sólo el valor de arranque: si hubiera que
-   editarlo a mano en cada venta, haría falta un deploy por compra y el
-   contador acabaría clavado (que es justo lo que pasó con la primera).
-   La RPC devuelve un número y nada más — `founders_waitlist` no se puede
-   leer con la anon key, y así sigue siendo. */
-fetch(CONFIG.supabaseUrl+"/rest/v1/rpc/founders_vendidas",{
-  method:"POST",
-  headers:{"apikey":CONFIG.supabaseKey,"Authorization":"Bearer "+CONFIG.supabaseKey,
-           "Content-Type":"application/json"},
-  body:"{}"
-}).then(function(r){ return r.ok ? r.json() : null })
-  .then(function(n){
-    if(typeof n!=="number" || n<0) return;           // si falla, se queda el del CONFIG
-    CONFIG.plazasVendidas = n;
-    libres = Math.max(0, CONFIG.plazasTotales - n);
-    ["left1","left2","left3"].forEach(function(i){set(i,libres)});
-    // Se busca el botón por id y no por la variable `btn`, que se declara más
-    // abajo: esto llega por red y no conviene que dependa del orden del script.
-    var b=$("rsvBtn");
-    if(libres<=0 && b){ b.disabled=true; b.textContent="Plazas agotadas" }
-  }).catch(function(){});
-["tot1","tot2"].forEach(function(i){set(i,CONFIG.plazasTotales)});
-["pn1","pn2"].forEach(function(i){set(i,CONFIG.precioNormal.toFixed(2))});
-["pf1","pf2"].forEach(function(i){set(i,CONFIG.precioFounders.toFixed(2))});
-set("psave",Math.round((1-CONFIG.precioFounders/CONFIG.precioNormal)*100));
-set("yr",new Date().getFullYear());
-
-if(CONFIG.social.mostrar){
-  $("prueba").style.display="";
-  set("s1",CONFIG.social.reservadas);
-  set("s2",CONFIG.social.reproducciones);
-  set("s3",CONFIG.social.listaEspera);
+function pieza(v){
+  return '<div class="marco"><div class="screen" data-video="'+esc(v.src)+'">'+
+           '<img src="'+esc(v.poster)+'" alt="" loading="lazy" decoding="async">'+
+           '<button class="vplay" type="button" aria-label="Reproducir: '+esc(v.t)+'"><i>'+PLAY_SVG+'</i></button>'+
+           '<span class="vdur">'+esc(v.dur)+'</span>'+
+         '</div></div>'+
+         '<div class="vcap"><b>'+esc(v.t)+'</b><span>'+esc(v.d)+'</span></div>';
 }
 
-/* ── Cuenta atrás ───────────────────────────────────────────────── */
-var fin=new Date(CONFIG.cierre).getTime();
-(function tick(){
-  var ms=fin-Date.now();
-  if(ms<=0){ set("cdown","cerrado"); return }
-  var s=Math.floor(ms/1000);
-  set("cdown",Math.floor(s/86400)+"d "+Math.floor(s/3600)%24+"h "+Math.floor(s/60)%60+"m");
-  setTimeout(tick,1000);
-})();
+if(VIDEOS_EXPLICATIVOS.length){
+  $("vDestacado").innerHTML = pieza(VIDEOS_EXPLICATIVOS[0]);
+  $("vReel").innerHTML = VIDEOS_EXPLICATIVOS.slice(1).map(function(v){
+    return '<div class="pieza rv">'+pieza(v)+'</div>';
+  }).join("");
+}
+
+[].forEach.call(document.querySelectorAll(".vplay"),function(btn){
+  btn.addEventListener("click",function(){
+    var screen=btn.parentNode, src=screen.dataset.video;
+    var img=screen.querySelector("img");
+    var poster=img?img.getAttribute("src"):"";
+    // El póster, el botón y la duración se quitan ANTES de meter el vídeo: si
+    // no, durante un instante hay dos elementos de alto completo dentro de la
+    // misma pantalla y el marco pega un salto.
+    if(img) img.remove();
+    var dur=screen.querySelector(".vdur"); if(dur) dur.remove();
+    btn.remove();
+
+    var v=document.createElement("video");
+    v.setAttribute("playsinline","");
+    v.setAttribute("webkit-playsinline","");
+    v.setAttribute("controls","");
+    v.setAttribute("preload","auto");
+    if(poster) v.setAttribute("poster",poster);  // tapa el negro mientras carga
+    // Primero al DOM y después el src, por lo mismo que en paint().
+    screen.appendChild(v);
+    v.src=src;
+    // Suena: lo ha pedido con un gesto, así que el navegador lo permite. Y si
+    // aun así se negara, quedan los controles nativos a la vista.
+    var go=v.play();
+    if(go&&go.catch) go.catch(function(){});
+    // Uno a la vez: dos voces hablando encima no se entienden.
+    [].forEach.call(document.querySelectorAll("[data-video] video"),function(o){
+      if(o!==v && !o.paused) o.pause();
+    });
+  });
+});
+
+/* ── Botones de tienda ──────────────────────────────────────────────
+   Se pintan desde CONFIG.tiendas para que encender Google Play el día
+   que Google apruebe la ficha sea pegar una URL en un sitio, y no
+   buscar el mismo botón repetido por el HTML. */
+var LOGO_APPLE='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.54c-.02-2.67 2.18-3.95 2.28-4.02-1.24-1.81-3.17-2.06-3.86-2.09-1.64-.17-3.2.97-4.03.97-.83 0-2.11-.94-3.47-.92-1.79.03-3.44 1.04-4.36 2.64-1.86 3.23-.47 8.01 1.33 10.63.88 1.28 1.93 2.72 3.31 2.67 1.33-.05 1.83-.86 3.44-.86 1.6 0 2.06.86 3.47.83 1.43-.02 2.34-1.31 3.21-2.6 1.01-1.49 1.43-2.93 1.45-3.01-.03-.01-2.78-1.07-2.81-4.23zM14.6 4.6c.73-.89 1.22-2.12 1.09-3.35-1.05.04-2.32.7-3.08 1.58-.68.78-1.27 2.03-1.11 3.23 1.17.09 2.37-.6 3.1-1.46z"/></svg>',
+    LOGO_PLAY='<svg viewBox="0 0 24 24" aria-hidden="true">'+
+      '<path d="M3.6 1.8c-.37.4-.6 1-.6 1.8v16.8c0 .8.23 1.4.6 1.8l.06.06 9.4-9.4v-.22L3.66 1.74z" opacity=".95"/>'+
+      '<path d="M16.3 15.5l-3.2-3.24v-.22l3.2-3.2.08-.05 3.8 2.16c1.09.62 1.09 1.62 0 2.24l-3.8 2.16z" opacity=".75"/>'+
+      '<path d="M16.38 15.46L13.1 12.18 3.6 21.7c.36.38.95.43 1.6.05l11.18-6.29z" opacity=".85"/>'+
+      '<path d="M16.38 8.94L5.2 2.65c-.65-.38-1.24-.33-1.6.05l9.5 9.48z" opacity=".6"/></svg>';
+
+function botonesTienda(){
+  var h='<a class="store" href="'+esc(CONFIG.tiendas.appstore)+'" target="_blank" rel="noopener">'+
+          LOGO_APPLE+'<span style="text-align:left">Descárgala en la<b>App Store</b></span></a>';
+  h += CONFIG.tiendas.play
+    ? '<a class="store" href="'+esc(CONFIG.tiendas.play)+'" target="_blank" rel="noopener">'+
+        LOGO_PLAY+'<span style="text-align:left">Disponible en<b>Google Play</b></span></a>'
+    : '<span class="store pronto" role="note">'+
+        LOGO_PLAY+'<span style="text-align:left">Pronto en<b>Google Play</b></span></span>';
+  return h;
+}
+["storesHero","storesCaja"].forEach(function(id){
+  var el=$(id); if(el) el.innerHTML=botonesTienda();
+});
+
+document.getElementById("yr").textContent=new Date().getFullYear();
 
 /* ── Aparición al hacer scroll ──────────────────────────────────── */
 var rv=document.querySelectorAll(".rv");
@@ -670,7 +730,7 @@ if(!("IntersectionObserver" in window)){
   vo.observe(vs);
 }
 
-/* ── Los vídeos sólo corren mientras se ven ─────────────────────────
+/* ── Los vídeos de fondo sólo corren mientras se ven ────────────────
    Fuera de pantalla no aportan nada y gastan batería y datos, que en un
    móvil llegado desde Instagram es justo lo que no sobra. */
 if("IntersectionObserver" in window && VIDEOS.length){
@@ -693,141 +753,16 @@ addEventListener("scroll",function(){
   requestAnimationFrame(function(){hdr.classList.toggle("stuck",scrollY>8);busy=false});
 },{passive:true});
 
-/* ── Reserva / cobro ────────────────────────────────────────────── */
-var form=$("rsv"),msg=$("msg"),btn=$("rsvBtn"),input=$("email"),
-    cobrando=!!(CONFIG.pago && CONFIG.pago.enlace);
-
-function say(t,k){msg.textContent=t;msg.className="msg "+(k||"")}
-
-// Cada pasarela nombra sus parámetros a su manera. Lemon Squeezy usa
-// checkout[...]; Stripe, nombres sueltos. La referencia viaja como dato
-// personalizado para poder cruzar el pago con la fila de la base de datos.
-function urlPago(email,ref){
-  var base=CONFIG.pago.enlace, sep=base.indexOf("?")<0?"?":"&", q;
-  if(CONFIG.pago.proveedor==="stripe"){
-    q="prefilled_email="+encodeURIComponent(email)+
-      "&client_reference_id="+encodeURIComponent(ref);
-  }else{
-    // El correo va rellenado: si no, el comprador tiene que volver a
-    // escribir el que acaba de escribir aquí, y ahí se pierde gente.
-    q="checkout[email]="+encodeURIComponent(email)+
-      "&checkout[custom][ref]="+encodeURIComponent(ref);
-  }
-  return base+sep+q;
-}
-
-// El botón y la letra pequeña cambian solos según haya enlace de pago o no,
-// para que nunca prometan una cosa y hagan otra. Lo mismo vale para el hero y
-// las tres preguntas del FAQ que hablan de dinero: en modo reserva no se cobra
-// nada y el código se canjea en la App Store; en modo cobro se paga hoy y el
-// código se canjea dentro de la app. Decir lo que no es acaba en devoluciones.
-btn.textContent = cobrando ? CONFIG.pago.textoBotonPago : "Reservar";
-// Desde México se cobra en pesos, no en dólares: el checkout enseña MXN 99 y
-// aquí pone 5,99 USD. Sin avisarlo, quien lo vea piensa que le están cobrando
-// otra cosa y se sale.
-$("fineTxt").textContent = cobrando
-  ? "Pago seguro con Stripe. Desde México se cobran $99 MXN. Tu plaza Founders queda a tu nombre y recibes el código de acceso el día del lanzamiento."
-  : "Reservar es gratis. El día del lanzamiento recibes tu código Founders para activar Premium al precio bloqueado desde la App Store.";
-
-var textos = {
-  navBtn:      ["Reservar plaza",                          "Entrar como Founder"],
-  heroCta:     ["Reservar mi plaza",                       "Entrar como Founder"],
-  heroFine:    ["Sin pago hoy · Precio bloqueado de por vida",
-                "Pago único de $" + CONFIG.precioFounders.toFixed(2) + " · Tu primer mes desde el día uno"],
-  faqAcceso:   ["Un correo con tu código único. Lo canjeas en la App Store y Premium queda activo al precio Founders.",
-                "Un correo con tu código único. Lo canjeas dentro de AllInOne y Premium se activa al momento."],
-  faqPago:     ["No. Reservar es gratis. Sólo pagas al canjear tu código, desde tu cuenta de Apple.",
-                "Sí. Los $" + CONFIG.precioFounders.toFixed(2) + " de hoy cubren tu primer mes de Premium completo y apartan tu plaza Founders."],
-  faqCancelar: ["Sí, en dos toques desde los ajustes de tu Apple ID. Además hay 7 días de prueba gratis.",
-                "No hay suscripción que cancelar: es un pago único por un mes. Al acabar decides si sigues, al precio Founders."],
-  // Lo que se cobra es un pago ÚNICO por un mes, no una suscripción. Dejar
-  // "USD al mes" con el cobro encendido hace creer que hay cargo recurrente:
-  // unos no compran por miedo al compromiso y otros esperan un cobro que no
-  // llega. Las dos cosas cuestan dinero.
-  perTxt:      ["USD al mes · Premium completo",
-                "USD pago único · 1 mes de Premium completo"],
-  saveTxt:     ["Ahorras " + Math.round((1-CONFIG.precioFounders/CONFIG.precioNormal)*100) + "% de por vida",
-                "Ahorras " + Math.round((1-CONFIG.precioFounders/CONFIG.precioNormal)*100) + "% sobre el precio normal"],
-  // El contador del hero decía "/mes" fijo en el HTML y se quedaba fuera de
-  // este objeto. Con el cobro encendido es lo primero que se ve al entrar y
-  // lo que más se comparte en captura: dejarlo prometía una mensualidad
-  // donde hay un pago único.
-  pf1u:        ["/mes",                                    " pago único"]
-};
-Object.keys(textos).forEach(function(id){
-  var el = $(id); if (el) el.textContent = textos[id][cobrando ? 1 : 0];
-});
-
-form.addEventListener("submit",function(ev){
-  ev.preventDefault();
-  var email=input.value.trim().toLowerCase();
-  if(!/^\S+@\S+\.\S+$/.test(email)){say("Revisa el correo, parece incompleto.","err");input.focus();return}
-  if(libres<=0){say("Las plazas Founders se han agotado.","err");return}
-
-  // Referencia corta para cruzar el pago de Stripe con esta fila.
-  var ref = Date.now().toString(36) + Math.random().toString(36).slice(2,7);
-
-  btn.disabled=true;
-  say(cobrando ? "Un momento, te llevo al pago…" : "Guardando tu plaza…");
-
-  fetch(CONFIG.supabaseUrl+"/rest/v1/"+CONFIG.tabla,{
-    method:"POST",
-    headers:{"apikey":CONFIG.supabaseKey,"Authorization":"Bearer "+CONFIG.supabaseKey,
-             "Content-Type":"application/json","Prefer":"return=minimal"},
-    body:JSON.stringify({email:email,source:"landing",ref:ref,
-                         estado: cobrando ? "pendiente_pago" : "reserva"})
-  }).then(function(r){
-    // 409 = ese correo ya estaba. No es un error para quien lo escribe: si
-    // viene a pagar, se le deja pasar igual al checkout.
-    if(!(r.ok||r.status===409)) throw new Error(r.status);
-
-    if(cobrando){ location.href = urlPago(email,ref); return }
-    form.style.display="none";
-    say("Plaza reservada. Te escribo a "+email+" el día del lanzamiento.","ok");
-  }).catch(function(){
-    // Cuando se está cobrando, guardar la fila es lo secundario: lo que no se
-    // puede perder es la venta. Si Supabase falla (red, RLS, lo que sea) se
-    // manda igual al checkout — el correo viaja en la URL y Stripe deja el
-    // registro del pago, así que la reserva se puede reconstruir después.
-    if(cobrando){ location.href = urlPago(email,ref); return }
-    btn.disabled=false;
-    say("No se pudo guardar. Inténtalo otra vez o escríbeme a allinone.support.app@gmail.com","err");
-  });
-});
-
-/* ── Si ya compró, la página deja de venderle ───────────────────────
-   /gracias/ deja una marca en localStorage. Sin esto, el Founder que vuelve
-   se encuentra la misma página que antes de pagar, con el contador, la
-   cuenta atrás y el botón de comprar: parece que su compra no existió. */
-try{
-  if(localStorage.getItem("allinone_founder")){
-    var caja=document.querySelector(".price");
-    if(caja){
-      caja.innerHTML =
-        '<span class="flag">Ya eres Founder</span>'+
-        '<h3 style="margin:18px 0 10px;font-size:26px">Tu plaza está guardada</h3>'+
-        '<p style="max-width:34ch;margin:0 auto">El día del lanzamiento te escribo con tu código a tu correo. '+
-        'No tienes que hacer nada más.</p>'+
-        '<p class="fine" style="margin-top:20px">¿Algo no cuadra? Escríbeme a '+
-        '<a href="mailto:allinone.support.app@gmail.com" style="color:var(--blue)">allinone.support.app@gmail.com</a></p>';
-    }
-    var navb=$("navBtn"); if(navb) navb.textContent="Ya eres Founder";
-    var hcta=$("heroCta"); if(hcta) hcta.textContent="Tu plaza está guardada";
-    var hfine=$("heroFine"); if(hfine) hfine.textContent="Te escribo el día del lanzamiento";
-  }
-}catch(e){}
-
 /* ── Contador de visitas ────────────────────────────────────────────
-   GitHub Pages no da estadísticas, así que la visita se anota en la misma
-   base de datos que las reservas (tabla page_views, insert-only con la clave
-   pública). Sin cookies y sin datos personales: el session_id es aleatorio y
-   vive en sessionStorage, así que muere al cerrar la pestaña — sirve para no
-   contar diez veces a quien recarga, no para seguir a nadie.
+   GitHub Pages no da estadísticas, así que la visita se anota en Supabase
+   (tabla page_views, insert-only con la clave pública). Sin cookies y sin
+   datos personales: el session_id es aleatorio y vive en sessionStorage,
+   así que muere al cerrar la pestaña — sirve para no contar diez veces a
+   quien recarga, no para seguir a nadie.
 
-   Va dentro de try/catch y sin await deliberadamente: si Supabase falla, o el
-   navegador tiene sessionStorage bloqueado, o alguien usa un bloqueador, la
-   página tiene que seguir funcionando igual. Contar visitas nunca puede
-   romper la venta. */
+   Va dentro de try/catch y sin await deliberadamente: si Supabase falla, o
+   el navegador tiene sessionStorage bloqueado, o alguien usa un bloqueador,
+   la página tiene que seguir funcionando igual. */
 try{
   var sid;
   try{
@@ -849,9 +784,11 @@ try{
   }).catch(function(){});
 }catch(e){}
 
-/* ── Las URLs legales antiguas apuntaban a la raíz ──────────────── */
-var h=location.hash;
-if(h==="#privacidad"||h==="#terminos") location.replace("/legal/"+h);
+/* ── Las URLs legales antiguas apuntaban a la raíz ──────────────────
+   App Store Connect tiene registrado allinonehabits.online/#privacidad.
+   Ahora #terminos ES una sección de esta página, así que ese sólo baja
+   hasta ella; #privacidad sigue viviendo en /legal/. */
+if(location.hash==="#privacidad") location.replace("/legal/#privacidad");
 })();
 </script>
 </body>

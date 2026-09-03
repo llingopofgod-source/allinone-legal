@@ -72,9 +72,12 @@ def main():
         img.paste(logo, (x, 66), redondo)
     d.text((x + 78, 82), "AllInOne", font=fuente(31, 600), fill=TINTA)
 
-    # ── Píldora de escasez ───────────────────────────────────────────────
+    # ── Píldora de estado ────────────────────────────────────────────────
+    # Decía "100 plazas Founders" mientras se vendía la preventa. Esa venta
+    # está cerrada y la app publicada: esta imagen es lo que se ve al pegar el
+    # enlace en WhatsApp o Instagram, así que no puede seguir prometiéndolas.
     py = 158
-    txt = "100 plazas Founders"
+    txt = "Ya en la App Store"
     f_p = fuente(21, 500)
     w_p = d.textlength(txt, font=f_p)
     d.rounded_rectangle([x, py, x + w_p + 62, py + 44], radius=22,
@@ -97,7 +100,7 @@ def main():
     d.line([x, 536, W - 74, 536], fill=(228, 228, 234), width=1)
     d.text((x, 558), "allinonehabits.online", font=fuente(23, 500), fill=GRIS)
 
-    precio = "$5.99 USD"
+    precio = "Gratis para empezar"
     f_pr = fuente(23, 600)
     d.text((W - 74 - d.textlength(precio, font=f_pr), 558), precio,
            font=f_pr, fill=TINTA)
